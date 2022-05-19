@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+</head>
+<body>
+  <h4>요소 추가/삭제</h4>
+  <button type="button" onclick="add()">추가</button>
+  <button type="button" onclick="remove()">삭제</button>
+  <div id="d1"></div>
+  
+  <button type="button" onclick="addRemove()">추가/삭제</button>
+  <div id="d2"></div>
+  
+<script>
+let str = ["봄","여름","가을","겨울","spring","summer","autumn","winter"];
+
+function add(){
+	let rnd = Math.floor(Math.random()*str.length);
+	//랜덤 문자열로 textNode 생성하기
+	let txt = document.createTextNode(str[rnd]);
+	//새로 생성한 textNode를 삽입할 공간 생성하기
+	let pTag = document.createElement("p");
+	pTag.appendChild(txt);
+	document.getElementById('d1').appendChild(pTag);
+}
+function remove(){
+	//삭제할 대상의 부모 접근
+	let parent = document.getElementById('d1');
+	//삭제 대상 선택
+	let child = parent.firstChild;
+	//삭제
+	parent.removeChild(child);
+}
+function addRemove(){
+	let rnd = Math.floor(Math.random()*str.length);
+	let txt = document.createTextNode(str[rnd]);
+	//각 textNode의 삭제 버튼 생성하기
+	let btn = document.createElement("input");
+	btn.type = "button";
+	btn.value = "삭제";
+	btn.onclick = function(){
+		//삭제대상찾기
+		//alert(this.parentNode.nodeName);
+		this.parentNode.remove();
+	}
+// 	let btn = document.createElement("button");
+// 	btn.type = "button";
+// 	btn.innerHTML = "delete"
+	//랜덤문자와 버튼을 삽입할 공간 생성
+	let pTag = document.createElement("p");
+	pTag.appendChild(txt);
+	pTag.appendChild(btn);
+	document.getElementById('d2').appendChild(pTag);
+}
+</script>
+<!-- <input type="button" value="버튼1"> -->
+<!-- <button type="button>버튼2</button> -->
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+/* 요소선택자 */
+p {
+  color: orange;
+  width: 30%;
+}
+/* id선택자 */
+#a {
+  color: red;
+}
+/* class선택자 */
+.b {
+  color: blue;
+}
+/* 전체선택자 */
+* {
+  border: 1px dotted lightgray;
+}
+/* 속성선택자 */
+p[title="코스모스"] {
+  /*축약기법 사용시 순서 상관없음 */
+  /* border: 1px solid gray; */
+  border-width: 2px 5px 1px;	/* top - left,right - bottom */
+  border-style: dashed solid;	/* top,bottom - left,right */
+  border-color: red yellow green blue;	/* 시계방향으로 t-r-b-l */
+}
+</style>
+</head>
+<body>
+  <p title="무궁화" id="a">111</p>
+  <p title="프리지아" class="b">222</p>
+  <p title="국화" class="b">333</p>
+  <p title="코스모스" class="c">444</p>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+</head>
+<body>
+<pre>
+  input type=radio		여러 값 중 하나만 선택 가능
+  input type=checkbox	하나 또는 여러 개 선택 가능
+  input type=hidden		클라이언트에게 보여지지 않지만 서버로 전송되는 숨겨진 값
+</pre>
+
+  <form action="test2.jsp" method="post">
+    이름 : <input type="text" name="name"> <br>
+    
+    성별 : 남<input type="radio" name="gender" value="남자">
+      	  여<input type="radio" name="gender" value="여자"> <br>
+
+	<input type="" name="hd" value="일급기밀"> <br>
+     	
+    좋은것 : 
+    <input type="checkbox" name="food" value="떡볶이">떡볶이
+    <input type="checkbox" name="food" value="파스타">파스타
+    <input type="checkbox" name="food" value="곱창">곱창
+    <input type="checkbox" name="food" value="빙수">빙수
+    <input type="checkbox" name="food" value="냉면">냉면 <br>
+    
+    파일 : <input type="file" name="file"> <br>
+    
+    <input type="submit" value="전송">
+    <input type="reset">
+  </form>
+
+
+
+</body>
+</html>

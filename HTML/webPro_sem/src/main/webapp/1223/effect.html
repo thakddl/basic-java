@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <input type="button" id="hide" value="hide">
+  <input type="button" id="show" value="show">
+  <input type="button" id="togl" value="toggle">
+  <input type="button" id="sUp" value="slideUp">
+  <input type="button" id="sDown" value="slideDown">
+  <input type="button" id="sTogl" value="slideToggle">
+  <input type="button" id="fOut" value="fadeOut">
+  <input type="button" id="fIn" value="fadeIn">
+  <input type="button" id="fTogl" value="fadeToggle">
+  <br><br>
+  <img src="../images/tiger.jpg" alt="호랑이">
+  
+  <ul id="ul">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+  
+<script>
+$('#ul').on('click',function(){
+	$(this).slideUp();
+});
+$('#hide').on('click',function(){
+	$('img').hide(1000);
+});
+$('#show').on('click',function(){
+	$('img').show('fast',function(){
+	  alert("까꿍!!");
+	});
+});
+$('#togl').on('click',function(){
+	$('img').toggle();
+});
+$('#sUp').on('click',function(){
+	$('img').slideUp(100);	//이상하게 나오네요..위로 접혀야 함
+});
+$('#sDown').on('click',function(){
+	$('img').slideDown();	//이상
+});
+$('#sTogl').on('click',function(){
+	$('img').slideToggle();	//이상해...
+});
+$('#fOut').on('click',function(){
+	$('img').fadeOut();
+});
+$('#fIn').on('click',function(){
+	$('img').fadeIn();
+});
+$('#fTogl').on('click',function(){
+	$('img').fadeToggle();
+});
+</script>
+</body>
+</html>

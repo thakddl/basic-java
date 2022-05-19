@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script>
+//랜덤 생성
+const rnd = Math.floor(Math.random()*100+1);
+// const rnd = parseInt(Math.random()*100+1);
+let cnt = 0;
+let str = "";
+
+function test(){
+	
+	let hint = "";
+	let numVal = document.getElementById('number').value;
+	
+	str += numVal + " ";
+	
+	//공백문자 방지
+	if(numVal.trim() == "") return;
+	
+	if(numVal == rnd){
+		cnt++;
+		let rst = `총 횟수 : ${cnt} <br>`;
+			rst += `입력한 값 : ${str}`;
+	document.getElementById('message').innerHTML = rst;
+	}else if(numVal < rnd){
+		cnt++;
+		hint = `더 큰수를 입력하세요`;
+	document.getElementById('message').innerHTML = hint;
+	}else if(numVal > rnd){
+		cnt++;
+		hint = `더 작은수를 입력하세요`;	
+	document.getElementById('message').innerHTML = hint;
+	}
+}
+//컴퓨터는 랜덤수, 사용자는 prompt이용 - 가위바위보
+function ex2(){
+	let arr = ["가위","바위","보"];
+	let rnd = parseInt(Math.random()*3);
+	let com = arr[rnd];
+	let user = prompt("가위바위보 중 입력");
+	//출력
+	let rst = `com : ${com} <br>`;
+		rst += `user : ${user} <br>`;
+
+	if(com == user) rst += `비겼네요`;
+	else if(com == "가위" && user == "보" || 
+			com == "바위" && user == "가위" ||
+			com == "보" && user == "바위"){
+		rst += `com 승리!`;
+	}else{
+		rst += `user 승리!`;
+	}
+	document.getElementById('p1').innerHTML = rst;	
+}
+//로또생성 - 중복안됌
+function ex3(){
+	
+	let lotto = new Array();
+	//중복되지 않는 6개의 랜덤(1~45)숫자 발생
+	for(i=0; i<6; i++){
+		let rnd = parseInt(Math.random()*45+1);
+		//중복 제거
+		if(lotto.indexOf(rnd) == -1){
+			lotto[i] = rnd;
+			console.log("if>> idx:" + lotto.indexOf(rnd) + "," + rnd);
+		}else{
+			i -= 1;
+			console.log(`else>> idx: ${lotto.indexOf(rnd)}, ${rnd}`);
+		}
+	}
+	lotto.sort(function(a,b){return a-b});	//오름차순 정렬
+	document.getElementById('p2').innerHTML += lotto + "<br>";		
+}
+</script>
+</head>
+<body>
+  <h4>Number Guess</h4>
+  <p>1부터 100 사이 숫자 입력</p>
+  <input id="number">
+  <button type="button" onclick="test()">추측</button>
+  <p id="message"></p>
+  
+  <h4>가위바위보 게임</h4>
+  <button type="button" onclick="ex2()">가위바위보</button>
+  <p id="p1"></p>
+  
+  <h4>로또 생성</h4>
+  <button type="button" onclick="ex3()">lotto</button>
+  <p id="p2"></p>
+</body>
+</html>

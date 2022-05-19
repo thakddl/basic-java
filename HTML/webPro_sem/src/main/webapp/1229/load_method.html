@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outstyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <button>버튼</button>
+  <div id="d1"></div>
+  <div id="d2"></div>
+
+<script>
+$('button').on('click',function(){
+	let a = "apple";
+	let b = "pie";
+	//load(url, data, callback fn)
+	$('#d1').load("../test/loadTest.jsp", {"d1":a, "d2":b}, cb);
+	
+});
+//callback fn(response, status, xhr)
+function cb(a,b,c){
+	alert(a);
+	alert(b + " : " + c.status);
+}
+</script>
+</body>
+</html>

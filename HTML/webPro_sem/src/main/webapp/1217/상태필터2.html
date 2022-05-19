@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <pre>선택한 checkbox값 전송하기</pre>
+<br>
+<div id="d1">
+ <form>
+	취 미 :
+	<input type="checkbox" name="hobby" value="여행">여행
+	<input type="checkbox" name="hobby" value="장기">장기
+	<input type="checkbox" name="hobby" value="바둑">바둑
+	<input type="checkbox" name="hobby" value="독서" >독서
+	<input type="checkbox" name="hobby" value="낚시">낚시<br><br>
+	<input type="button" value="전송">
+  </form>
+  <div></div>
+</div>
+
+<pre>선택한 option값 가져오기</pre>
+<div class="box" id="d2">
+  <form>
+	봄소식 : 
+	<select name="spring" id="spring" multiple size="6">
+		<option>개나리</option>
+		<option selected>진달래</option>
+		<option>민들레</option>
+		<option selected>벚꽃</option>
+		<option>목련</option>
+		<option>철쭉</option>
+     </select>
+   </form>
+  <div></div>
+</div>
+<script>
+$('#d2 select').on('change',function(){
+	let op = "";
+	$('option:selected').each(function(){
+		op += $(this).val() + " ";
+	});
+	$('#d2 div').html(op);
+});
+
+$('input:button').on('click',function(){
+	let hobby="";
+	//속성선택자:필터
+	$(':checkbox:checked').each(function(){
+		hobby += $(this).val();
+	});
+	
+	//서버페이지로 전송하기
+	$('#d1 form').attr('action','test.jsp')
+				.attr('method','post').submit();
+	
+	$('#d1 div').html(hobby);
+});
+
+
+</script>
+</body>
+</html>

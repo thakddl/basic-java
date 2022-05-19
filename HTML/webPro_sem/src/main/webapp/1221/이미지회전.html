@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+img {
+  width: 60px;
+  height: 60px;
+}
+</style>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script src="../js/img.js"></script>
+</head>
+<body>
+<pre>
+  	확인버튼을 누르면
+  	append(),prepend()와 setInterval()을 이용해서 
+  	1초마다 이미지가 이동하기 및 확인버튼 숨김 또는 비활성화
+  	
+  	종료버튼 누르면 기능을 정지하고 확인버튼 나타내기 또는 활성화
+  	
+  	외부 자바스크립트 파일을 만들어서 연결
+</pre>
+  <input type="button" value="확인" id="btn1">
+  <input type="button" value="종료" id="btn2">
+  
+  <div class="box" id="d1">
+    <img src="../images/국화.jpg" alt="국화">
+    <img src="../images/사막.jpg" alt="사막">
+    <img src="../images/대나무숲.jpg" alt="대나무숲">
+    <img src="../images/Tulips.jpg" alt="튤립">
+    <img src="../images/수국.jpg" alt="수국">
+  </div>
+<script>
+//시작버튼
+$('#btn1').on('click',function(){
+	console.log(this);//btn
+	appendImg();	
+});
+//종료버튼
+$('#btn2').on('click',function(){
+	stopImg();
+});
+</script>
+</body>
+</html>

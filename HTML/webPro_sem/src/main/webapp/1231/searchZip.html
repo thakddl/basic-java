@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outstyle.css">
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script src="../js/bootstrap.min.js"></script></head>
+<body>
+
+  <div>
+    <p>찾는 동을 입력하세요</p>
+    <input type="text" id="dong">
+    <input type="button" value="검색" id="btnCode">
+    <br>
+    <div id="rst"></div>
+  </div>
+
+<script>
+$('#btnCode').on('click',function(){
+	
+	//null check
+	let vdong = $('#dong').val().trim();
+	if(vdong.length < 1){
+		alert("동을 입력하세요!!");
+		return false;
+	}
+	
+	$.ajax({
+	  url : 'dongSearch.jsp',
+	  data : {'dong' : vdong},
+	  success : function(aa){
+		  //숙제로 .. 테이블 형태로 찍어주세요
+		  let code = `<table border='1' class='table table-hover'`;
+		  code += `<tr><td>우편번호</td><td>주소</td><td>번지</td></tr>`;
+		  $.each(aa,function(){
+			  code += `<tr class='ziptr'><td>${this.code}</td>`;
+			  code += `<td>${this.addr}</td>`;
+			  code += `<td>${this.bunji}</td></tr>`;
+		  });
+		  code += `</table>`;
+		  $('#rst').html(code);
+	  },
+	  error : function(xhr){
+	  	alert(xhr.status);
+	  },
+	  dataType : 'json'
+	});
+});
+
+//결과 화면에서 하나를 선택해서 부모 창으로 출력
+$('#rst').on('click','.ziptr',function(){
+	let zCode = $('td:eq(0)',this).text();
+	let addr = $('td:eq(1)',this).text();
+	//부모창에 선택 값 출력
+	$('#zip',opener.document).val(zCode);
+	$('#add1',opener.document).val(addr);
+	window.close();
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet"  href="../css/outStyle.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+.siblings, .siblings * { 
+  display: block;
+  border: 1px dotted gray;
+  color: gray;
+  padding: 5px;
+  margin: 5px;
+}
+</style>
+<script>
+$(function(){
+	
+	//상위요소 찾기
+	//parents() 메소드는 최상위까지 검색하기 때문에 검색 결과가 1개 이상일 수 있다
+	//colosest() 메소드는 단 하나의 결과만 리턴한다
+	
+	//span의 부모 검색
+	$('#parent').on('click',function(){
+		$('#d1 span').parent()
+				.css({'color':'red','border':'2px solid red'});
+	});
+	
+	//span의 모든 조상 검색
+	$('#parents').on('click',function(){
+		$('#d1 span').parents()
+				.css({'color':'magenta','border':'2px solid magenta'});	
+	});
+	
+	//span의 조상들중 ul를 검색
+	$('#parents_sel').on('click',function(){
+		$('#d1 span').parents('ul')
+				.css({'color':'green','border':'2px solid green'});	
+	});
+	//span(selector)과 d1 div(stop)사이의 조상을 검색 (selector와 stop 영역은 미포함)
+	$('#parentsUntil').on('click',function(){
+		$('#d1 span').parentsUntil('#d1 div')
+				.css({'color':'olive','border':'2px solid olive'});
+	});
+	//span을 기준으로 조상 중에 가장 가까운 ul을 검색
+	$('#closest').on('click',function(){
+		$('#d1 span').closest('ul')
+			.css({'color':'pink','border':'2px solid pink'});
+	});
+		
+	//하위요소 찾기
+	//#d2를 기준으로 후손 span을 검색
+	$('#find').on('click',function(){
+		$('#d2').find('span').css({'color':'red','border':'2px solid red'});
+	});
+	
+	//버튼의 부모(=#d2)를 기준으로 후손 span을 검색
+	$('#outBtn').on('click',function(){
+		$(this).parent().find('span')
+				.css({'color':'orange','border':'2px solid orange'});
+	});
+	
+	//버튼의 조상들 중 #d2를 기준으로 후손 span을 검색 
+	$('#inBtn').on('click',function(){
+		$(this).parents('#d2').find('span')
+		.css({'color':'blue','border':'2px solid blue'});
+	});
+	
+	//선택자의 자식 요소(span) 검색
+	$('#children').on('click',function(){
+		$('#d2 li').children().css({'color':'pink','border':'2px solid pink'});
+	});
+	
+	//형제요소 찾기
+	$('#prev').on('click',function(){
+		//현재 문서상 class=start는 유일하기 때문에 홀로 접근가능
+		//$('.start')
+		//각 div당 동일한 class=start가 존재할 경우는 해당범위 안에 대상을 지정할 필요가 있음
+		//$('#d3 .start')
+		$('#d3 li.start').prev().css({'color':'blue','border':'2px solid blue'});
+	});
+	
+	$('#prevAll').on('click',function(){
+		$('.start').prevAll().css({'color':'red','border':'2px solid red'});		
+	});
+	$('#prevUntil').on('click',function(){
+		//prevUntil(end 지정하지 않으면 끝까지 선택) 
+		$('#d3 .start').prevUntil().css({'color':'green','border':'2px solid green'});	
+	});
+	$('#sibling').on('click',function(){
+		$('.start').siblings().css({'color':'gold','border':'2px solid gold'});	
+	});
+	$('#next').on('click',function(){});
+	$('#nextAll').on('click',function(){});
+	$('#nextUntil').on('click',function(){
+		$('.start').nextUntil('.stop').css({'color':'pink','border':'2px solid pink'});	
+	});
+})
+</script>
+</head>
+<body>
+  
+  <div class="box" id="d1">
+    상위요소 검색
+    <button type="button" id="parent">parent</button>
+    <button type="button" id="parents">parents</button>
+    <button type="button" id="parents_sel">parents_sel</button>
+    <button type="button" id="parentsUntil">parentsUntil</button>
+    <button type="button" id="closest">closest</button>
+     
+    <div class="siblings" style="width:500px;">div (great-great-grandparent)
+      <ul>ul (great-grandparent)
+        <ul>ul (grandparent)  
+          <li>li (direct parent)
+            <span>span을 기준으로 상위요소 검색
+              <ul>ul (span-child)
+                <li>li (ul-child)</li>
+              </ul>
+            </span>
+          </li>
+        </ul>
+      </ul>   
+    </div>
+  </div>
+  
+  <br>
+  
+  <div class="box" id="d2">
+    하위요소 검색
+    <button type="button" id="find">find</button>
+    <button type="button" id="outBtn">outBtn</button>
+    <button type="button" id="children">children</button>
+    
+    <div  class="siblings" style="width:500px;">div (great-grandparent)
+      <ul>ul (grandparent)  
+        <li>li (direct parent)
+          <span>span
+             <button type="button" id="inBtn">inBtn</button>
+          </span>
+        </li>
+      </ul>   
+    </div>
+  </div>
+  
+  <br>
+  
+  <div class="box" id="d3">
+    형제요소 검색
+    <button type="button" id="prev">prev</button>
+    <button type="button" id="prevAll">prevAll</button>
+    <button type="button" id="prevUntil">prevUntil</button>
+    <button type="button" id="sibling">sibling</button>
+    <button type="button" id="next">next</button>
+    <button type="button" id="nextAll">nextAll</button>
+    <button type="button" id="nextUntil">nextUntil</button>
+  	
+  	<div style="width:500px;" class="siblings">
+  	  <ul>ul (parent)  
+  	    <li>li prev sibling</li>
+  	    <li>li prev sibling</li>
+  	    <li class="start">li "start"</li>
+  	    <li>li next sibling</li>
+  	    <li>li next sibling</li>
+  	    <li class="stop">li "stop"</li>
+  	    <li>li next sibling</li>
+  	  </ul>   
+  	</div>
+  </div>
+  
+</body>
+</html>
+

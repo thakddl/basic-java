@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+div {
+  border: 1px dotted gold;
+  width: 20%;
+  height: 20px;
+  margin: 10px;
+  padding: 10px;
+}
+</style>
+<script>
+grade=function(){
+	let score = prompt("성적을 입력하세요", "0~100사이");
+	//console.log(parseInt(score/10));
+	
+	switch(parseInt(score/10)){
+	case 10:
+	case 9:
+		//document.write("AA");
+		document.getElementsByTagName('div')[0].textContent="A";
+		break;
+	case 8:
+		document.getElementsByTagName('div')[0].textContent="B";
+		break;
+	case 7:	
+		document.getElementsByTagName('div')[0].textContent="C";
+		break;
+	case 6:
+		document.getElementsByTagName('div')[0].textContent="D";
+		break;
+	case 5:
+	case 0:
+		document.getElementsByTagName('div')[0].textContent="F";
+		break;
+	}
+}
+</script>
+</head>
+<body>
+  <h4>성적 입력후 등급 결과 출력</h4>
+  <input type="button" value="등급확인" onclick="grade()">
+  <div></div>
+</body>
+</html>

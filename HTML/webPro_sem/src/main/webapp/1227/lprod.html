@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outstyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<style>
+td {
+  width: 300px;
+}
+</style>
+<script>
+$(function(){
+	$('#btn').on('click',function(){
+		$.ajax({
+		  url : 'lprod.jsp',		
+		  //type : 'get',			//생략가능
+		  //data :,	
+		  success : function(a){
+			  
+			  let cd = "<table border='1'>";
+			  cd += "<tr class='tr'><td>ID</td><td>GU</td><td>NM</td></tr>";
+			  $.each(a, function(i){
+				  cd += `<tr>`;
+				  cd += `<td>${a[i].id}</td>`;
+				  cd += `<td>${a[i].gu}</td>`;
+				  cd += `<td>${a[i].nm}</td>`;
+				  cd += `</tr>`;
+			  });
+			  cd += "</table>";
+			  $('#d1').html(cd);
+		  },
+		  error : function(xhr){
+		  	alert("상태 >> " + xhr.status);
+		  },						
+		  dataType : 'json'
+		});
+	});
+	
+	$('#btn2').on('click',function(){
+		$.ajax({
+		  url : 'lprod2.jsp',
+		  success:function(b){
+			  $('#d2').html(b);
+		  },
+		  error:function(xhr){
+			alert(xhr.status);
+		  },
+		  dataType: 'html'
+		});
+	});
+});
+</script>
+</head>
+<body>
+
+<!-- jquery Ajax 활용 -->
+<!-- lprod.jsp >> json Object Array데이터 받기 -->
+<!-- 테이블 형태로 작성하기  -->
+
+  <input type="button" id="btn" value="dataType-json">
+  <input type="button" id="btn2" value="dataType-html">
+  <br>
+  <div id="d1"></div>
+  <br><br>
+  <div id="d2"></div>
+
+</body>
+</html>

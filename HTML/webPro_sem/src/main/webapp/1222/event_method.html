@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+#box2 div {
+  width: 300px;
+  height: 200px;
+  background-color: pink;
+  padding: 40px; 
+}
+#box2 span {
+  width: 200px;
+  height: 120px;
+  background-color: orange;
+  display: inline-block; 
+}
+#box2 button {
+  margin: 40px;
+}
+</style>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	$('#link').on('click',function(){
+		let age = parseInt(prompt("나이를 입력하세요"));
+		//console.log(age);
+		if(isNaN(age)){
+			alert("숫자만 입력가능");
+// 			event.preventDefault();
+			return false;
+		}else if(age <= 15){
+			event.preventDefault();	//어느 위치라도 상관없음
+			alert("페이지 이동불가");
+// 			return false;	//return시 가장 마지막에 작성	
+		}
+	});	
+	
+	$('#box2 button').on('click',function(){
+		let clr = [];
+		for(i=0; i<3; i++){
+		  clr[i] = parseInt(Math.random()*256);
+		}
+// 		$(this).css('background-color','teal');
+		$(this).css('background-color',`rgb(${clr[0]},${clr[1]},${clr[2]})`);
+		event.stopPropagation();
+	});
+	$('#box2 span').on('click',function(){
+		let clr = [];
+		for(i=0; i<3; i++){
+		  clr[i] = parseInt(Math.random()*256);
+		}
+// 		$(this).css('border','2px dashed red');
+		$(this).css('border-style','dashed')
+				.css('border-color',`rgb(${clr[0]},${clr[1]},${clr[2]})`);
+		event.stopPropagation();
+	});
+	$('#box2 div').on('click',function(){
+		$(this).append('@');
+	});
+	
+});
+</script>
+</head>
+<body>
+  <div class="box" id="box1">
+    <h4>event.preventDefault() :  요소의 기본 이벤트 실행을 금지</h4>
+    <p><a href="http://www.naver.com" id="link">네이버</a>로 이동하기</p>
+  </div>
+  
+  <div class="box" id="box2">
+    <h4>event.stopPropagation() : 이벤트 버블링(=이벤트 전파)을 금지</h4>
+    <div>
+      <span>
+        <button>클릭</button>
+      </span>
+    </div>
+  </div>
+</body>
+</html>

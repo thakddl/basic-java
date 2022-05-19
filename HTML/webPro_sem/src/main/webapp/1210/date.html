@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+</head>
+<body>
+  <div></div>
+  <div></div>
+<script>
+let now1 = new Date();
+let now2 = new Date(3000);
+let now3 = new Date("2000.05.05");
+let now4 = new Date(2000, 05-1, 05, 15, 45, 24); //month는 0부터 시작한다
+document.getElementsByTagName('div')[0].innerHTML = now1 + "<br>"
+												 + now2 + "<br>" 
+												 + now3 + "<br>" 
+												 + now4 + "<br><br>";
+
+document.getElementsByTagName('div')[1].innerHTML 
+									= now1.toLocaleString() + "<br>"
+									+ now1.toLocaleDateString() + "<br>"
+									+ now1.toLocaleTimeString() + "<br>";
+												 
+</script>
+</body>
+</html>

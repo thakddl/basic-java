@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div class="box">
+    <form onsubmit="return false">
+      <label for="user">이름</label>
+      <input type="text" id="user" value="유재석"><br>
+      <label>성별</label>
+      <input type="radio" class="gend" name="gender" value="남자" checked>남자
+      <input type="radio" class="gend" name="gender" value="여자">여자 <br>
+      <label for="intro">소개</label>
+      <textarea id="intro" cols="40" rows="4"></textarea><br>
+      <label for="work">직업</label>
+      <select id="work">
+        <option value="programmer">프로그래머</option>
+        <option value="designer">디자이너</option>
+        <option value="publisher">퍼블리셔</option>
+      </select>
+      <br><br>
+      <button id="btnView">조사하기</button>
+      <button type="button" id="btnChange">이름변경</button>
+    </form>
+    <br><br>
+    <div id="d1"></div>
+  </div>
+<script>
+$('#btnView').on('click',function(){
+	let rst = "이름 : " + $('#user').val() + "<br>";
+		rst += "성별 : " + $('.gend:checked').val() + "<br>";
+		rst += "소개 : " + $('#intro').val()
+								.replace(/\r/g,"")
+								.replace(/\n/g,"<br>") + "<br>";
+		rst += "직업 : " + $('#work option:selected').val();
+	$('#d1').html(rst);
+});
+//prompt활용해서 이름 변경하기
+$('#btnChange').on('click',function(){
+	let nm = prompt("변경할 이름을 입력하세요");
+	$('#user').val(nm);
+});
+</script>
+</body>
+</html>

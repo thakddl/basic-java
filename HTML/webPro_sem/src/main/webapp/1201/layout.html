@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+div {
+  border-radius: 5px;
+  margin: 2px;
+  padding: 5px;
+  border: 1px solid black;
+  /* 지정한 컨텐츠 사이즈에 패딩과 보더 값을 포함시키는 속성 */
+  box-sizing: border-box;
+}
+#hd, header {
+  background-color: yellow;
+  height: 40px;
+}
+#nv, nav {
+  background-color: red;
+  /* 
+  비율에 맞게 요소의 사이즈를 조절해주는 calc()
+  주의사항 : 마이너스 기호 앞뒤로 공백유지
+  */
+  width: calc(30% - 4px);
+  height: 300px;
+  /* div가 갖는 block특성을 무력화시킴 */
+  float: left; 
+}
+#ct, article {
+  background-color: green;
+  width: calc(70% - 4px);
+  height: 300px;
+  float: right;
+}
+#ft, footer {
+  background-color: violet;
+  height: 40px;
+  clear: both;
+}
+</style>
+</head>
+<body>
+  <div id="hd">header</div>
+  <div id="nv">nav</div>
+  <div id="ct">content</div>
+  <div id="ft">footer</div>
+  
+  <br><br>
+  
+  <header>header</header>
+  <nav>nav</nav>
+  <article>content</article>
+  <footer>footer</footer>
+</body>
+</html>

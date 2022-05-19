@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+.box {
+  border: 2px solid green;
+  margin: 10px;
+  padding: 10px;
+}
+</style>
+<script>
+$(function(){
+	
+	$('#box1 input').on('click',function(){
+		let newP = $('<p title="hello1" onclick="proc(this)">Hi jQuery</p>');
+		newP.appendTo($('#box1 #d1'));
+	});
+	
+	$('#box2 input').on('click',function(){
+		let newP = $('<p></p>', {
+			'title':'hello2',
+			'text':'Hi jQuery',
+			/* 
+			  onclick : 이벤트 처리를 위한 핸들러(=동작 발생시 처리해야하는 실제 내용)작동
+			  click : '클릭했을때'의 이벤트(사용자 동작) 발생
+			*/
+			'onclick':function(){	//핸들러 발생으로 인해 스타일 바로 지정
+// 			'click':function(){}	//이벤트의 설정 - 액션이 일어나야 핸들러를 호출
+				$(this).css('color','blue').css('background','skyblue');
+			}
+		});
+		newP.appendTo($('#box2 #d2'));
+	});
+	
+	$('#btn').on('click',function(){
+		let vimg = $("<img src='../images/tiger.jpg' alt='호랑'>");
+// 		$('#d3').append(vimg);
+// 		$(vimg).appendTo($('#d3'));
+		$('#d3').html(vimg);
+	});
+});
+function proc(a){
+	//a.style.color = "red";
+	$(a).css('color','orange').css('font-size','1.5em');
+}
+</script>
+</head>
+<body>
+  <h4>새요소 생성하기</h4>
+  
+  <div class="box" id="box1">
+    <p>$('html 코드')</p>
+    <input type="button" value="새요소생성">
+    <div id="d1"></div>
+  </div>
+  
+  <div class="box" id="box2">
+    <p>
+      $('html 코드', {properties}) <br>
+      : properties에는 속성('key':'value'), 이벤트를 설정
+    </p>
+    <input type="button" value="새요소생성">
+    <div id="d2"></div>
+  </div>
+  
+  <button type="button" id="btn">새요소생성</button>
+  <div id="d3"></div>
+
+</body>
+</html>

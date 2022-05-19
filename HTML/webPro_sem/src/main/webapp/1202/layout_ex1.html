@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+div {
+  border: 3px dotted red;
+  width: calc(50% - 10px); /* 포함되지않는 바깥여백 값 제외 */
+  height: 600px;
+  margin: 5px;
+  box-sizing: border-box;  /* 지정한 너비 값에 안쪽여백,테두리 포함 */
+  float: left;
+  overflow: auto; /* 길이가 있는 요소에만 적용됨 */
+}
+h1 {
+  background-color: pink;
+}
+img {
+  width: 300px;
+}
+span {
+  background-color: skyblue;
+  color: red;
+  font-size: 1.4em;
+}
+#tg {
+  color: olive;
+}
+</style>
+</head>
+<body>
+  <div id="d1">
+    <h1>사자</h1>
+    <img src="../images/lion.jpg" alt="아기사자">
+    <p>사자lion사자lion사자lion<span>사자</span>lion사자lion사자lion사자<span>lion</span>사자lion사자lion사자lion</p>
+  </div>
+  <div>
+    <h1>호랑이</h1>
+    <img src="../images/tiger.jpg" alt="아기호랑이">
+    <p>호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger
+    호랑이tiger호랑이<span id="tg">tiger호랑이tiger</span>호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger
+    호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger
+    호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger
+    호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이
+    tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger
+    호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이
+    tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger
+    호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger
+    호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger
+    호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger호랑이tiger</p>
+  </div>
+</body>
+</html>

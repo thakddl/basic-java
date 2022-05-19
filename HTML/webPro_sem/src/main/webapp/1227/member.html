@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outstyle.css">
+<style>
+.tr {
+  background-color: orange;
+}
+td {
+  width: 300px;
+}
+</style>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	$('#btn').on('click',function(){
+		$.ajax({
+		  url : 'member.jsp',		//요청
+		  //type : 'get',			//요청- default:get으로 생략가능
+		  //data :,					//(옵션)
+		  success : function(a){
+			  let code = "";
+			  $.each(a, function(i,v){
+				code += `${i+1}번째 데이터 정보 <br><br>`;
+				code += `아이디 : ${v.memId}<br>`;
+				code += `이름 : ${v.memNm}<br>`;
+				code += `전화 : ${v.memHp}<br><br>`;
+			  });
+			  $('#d1').html(code);
+			  
+			  //id="d2" 영역에 테이블 형태로 데이터 찍기
+			  let cd = "<table border='1'>";
+			  cd += "<tr class='tr'><td>아이디</td><td>이름</td><td>전화</td></tr>";
+			  $.each(a, function(i){
+				  cd += `<tr>`;
+				  cd += `<td>${a[i].memId}</td>`;
+				  cd += `<td>${a[i].memNm}</td>`;
+				  cd += `<td>${a[i].memHp}</td>`;
+				  cd += `</tr>`;
+			  });
+			  cd += "</table>";
+			  $('#d2').html(cd);
+		  },	//응답(필수)
+		  error : function(xhr){
+		  	alert("상태 >> " + xhr.status);
+		  },						//응답(필수)
+		  dataType : 'json'			//응답(필수)
+		});
+	});
+});
+</script>
+</head>
+<body>
+  <input type="button" id="btn" value="확인">
+  <br>
+  <div id="d1"></div>
+  <div id="d2"></div>
+</body>
+</html>

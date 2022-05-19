@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+</head>
+<body>
+<pre>
+	confirm() : 사용자에게 boolean 값을 리턴받을 수 있는 팝업 창 형태의 함수
+</pre>
+  <input type="button" value="확인" onclick="proc()">
+  <div id="rst"></div>
+  
+<script>
+//단을 입력받아 해당 구구단을 출력
+function proc(){
+	while(true){
+		let dan = prompt("단을 입력하세요");
+		let str = "";
+		for(i=1; i<10; i++){
+			str += `${dan} * ${i} = ${dan*i} <br>`;
+		}
+		//하나의 document에 단을 출력하기때문에 결과는 confirm이 종료된 후에 나옴
+		document.getElementById('rst').innerHTML += str + "<br>";
+		//계속 여부 확인
+		let conf = confirm("계속 할래요?");
+		if(!conf) break;
+	}
+}
+</script>
+</body>
+</html>

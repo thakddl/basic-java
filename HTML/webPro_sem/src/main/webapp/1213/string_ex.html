@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+</head>
+<body>
+  <pre>
+  	주민등록번호를 입력받아 생일,성별,나이 출력
+  	ex) 110325-4432618
+  	생일 : 2011년 3월 25일
+  	성별 : 여자
+  	나이 : 10살
+  </pre>
+  <input type="button" value="확인" onclick="proc1()">
+  <div id="d1"></div>
+  
+  <pre>
+  	주민등록번호 유효성 검사
+  	1. M을 제외한 모든 자리에 2~9까지 순서대로 곱하여 총합을 구함
+  	2. 총 합을 11로 나누어 나머지를 구함
+  	3. 11에서 나머지를 뺌
+  	4. 3번의 결과가 10일때 0, 11일때 1로 변환 (10이전 값은 그대로)
+  	5. 4번의 결과와 M자리가 같으면 유효한 번호
+  </pre>
+  <input type="button" value="확인" onclick="proc2()">
+  <div id="d2"></div>
+<script>
+function proc1(){
+	let a = prompt("주민등록번호를 입력하세요","110325-4432618");
+	
+	//자료추출 (index - 년:01 / 월:23 / 일:45 / 성별구분:7)
+	let a1 = a.substring(0,2);	//a.slice(0,2) , a.substr(0,2)
+	let a2 = a.substring(2,4);	//a.slice(2,4) , a.substr(2,2)
+	let a3 = a.substring(4,6);	//a.slice(4,6) , a.substr(4,2)
+	let d4 = a.substring(7,8);  //a.slice(7,8) , a.substr(7,1) , a.charAt(7)
+	
+	let yy = "";
+	let gender = "";
+	//출생년도
+	if(d4 == "1" || d4 == "2") yy = "19";
+	else if(d4 == "3" || d4 == "4") yy = "20";
+ 	//성별
+	if(d4 == "1" || d4 == "3") gender = "남자";
+	else if(d4 == "2" || d4 == "4") gender = "여자";
+ 	//생일
+ 	let bir = yy.concat(a1) + "년 " + a2 + "월 " + a3 + "일";
+ 	//나이
+ 	let now = new Date();
+ 	let year = now.getFullYear(); //4자리 연도 반환
+	let age = year - yy.concat(a1);
+	
+ 	//출력
+	let rst = `주민등록번호 : ${a.substring(0,8)} ****** <br>`;
+		rst += `생년월일 : ${bir} <br>`;
+		rst += `성별 : ${gender} <br>`;
+		rst += `나이 : ${age}살`;
+	document.getElementById('d1').innerHTML = rst;
+}
+//유효성검증
+function proc2(){
+	let a = prompt("주민등록번호를 입력하세요","110325-4432618");
+	let idNum = "";
+	//입력받는 방식에 하이픈이 추가된 경우 제거방법 2
+	//1.split()
+// 	idNum = a.split("-");
+// 	idNum = idNum[0].concat(idNum[1]);
+	
+	//2.replace()
+	idNum = a.replace("-","");
+	
+	//공식1. 총 합 구하기 A*2 + B*3 + C*4 + ... + H*9 + I*2 + ... + L*5의 총 합
+	let hap = 0;
+	//let num = "234567892345";
+	for(i=0; i<idNum.length-1; i++){ //M자리 제외한 나머지
+		if(idNum.charAt(i) == '0') continue;
+		//A*(0%8+2=2),B*(1%8+2=3)...H*(7%8+2=9),I*(8%8+2=2)...
+		hap += idNum.charAt(i) * (i%8+2);
+		//idNum.charAt(i) * num[i]
+	}
+	//공식2. 총 합을 11로 나눈 나머지를 구하기
+	//공식3. 11에서 나머지를 빼기
+	let b = 11-(hap%11);
+	console.log(b);
+	//공식4. 3의 결과가 0~9일때 그대로, 10일때 0, 11일때 1
+	b = b%10;
+	//공식5. 4번의 결과가 M자리와 같으면 유효한 주민등록번호
+	let last = a.charAt(idNum.length);
+	let rst = ``;
+	if(b == last) rst += `주민등록번호가 유효합니다`;
+	else rst += `주민등록번호가 맞지 않습니다`;
+	
+	//출력하기
+	let result = `입력한 주민등록번호 : ${a.substring(0,8)}****** <br>`;
+		result += `${rst}`;
+	document.getElementById('d2').innerHTML = result;
+}
+
+
+</script>
+</body>
+</html>

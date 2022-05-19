@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+div {
+  width: 200px;
+  height: 200px;
+  background-color: yellow;
+  padding: 10px;
+  margin:30px;
+  box-sizing: border-box;
+}
+#small {
+  border: 5px solid red; 
+}
+#large {
+  border: 15px solid green; 
+}
+body {
+  outline: 1px solid purple;
+}
+hr {
+  visibility: hidden;
+}
+</style>
+</head>
+<body>
+<pre>
+	box-sizing : border-box
+	지정한 컨텐츠의 크기에 테두리와 안쪽여백의 값을 포함시킬 수 있음
+	(default) box-sizing: content-box
+	
+	margin-collapse : 바깥쪽 여백 붕괴 현상
+</pre>
+  <div id="small"></div>
+  <hr>
+  <div id="large"></div>
+</body>
+</html>

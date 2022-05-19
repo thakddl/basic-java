@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+#rst {
+  border: 1px dashed red;
+  margin-top: 20px;
+  height: 100px;
+}
+</style>
+<script>
+function proc1(){
+  	let a = document.getElementById('d1').innerHTML;
+	alert(a);
+	document.getElementById('rst')
+			.innerHTML="<span style='color:orange;'>innerHTML입니다!!</span>";
+}
+function proc2(){
+  	let a = document.getElementById('d1').innerText;
+	alert(a);
+	document.getElementById('rst')
+			.innerText="<span style='color:orange;'>innerText입니다!!</span>";
+}
+function proc3(){
+  	let a = document.getElementById('d1').textContent;
+	alert(a);
+	document.getElementById('rst')
+			.textContent="<span style='color:orange;'>textContent입니다!!</span>";
+}
+function proc4(){
+  	let a = document.getElementsByTagName('input')[3].value;
+	alert(a);
+	document.getElementsByTagName('input')[3].value="asdf";
+}
+</script>
+</head>
+<body>
+<pre>
+	요소에 값을 읽어오거나 설정하는 방법
+	value		1. 입력요소 &lt;input>의 초기 값을 명시할 때 사용된다
+				2. 입력요소의 type에 따라 용도가 다르게 사용된다
+					- button, reset, submit : 버튼 내 텍스트를 정의
+					- hidden, password, text : 입력 필드의 초기 값 정의
+					- checkbox, image, radio : 필드 선택시 서버로 제출되는 값 정의
+
+	innerHTML	읽어오는 값에 태그가 포함된다
+				때문에 보안에 취약한 단점이 있음
+				HTML5에서는 innerHTML과 함께 삽입된 태그를 실행하지 않도록 지정해 놨음
+				보안점검을 거치는 프로젝트의 경우 코드 거부 가능성이 있으므로
+				특별한 경우를 제외하고 사용을 권장하지 않는다
+
+	innerText	element의 속성
+				사용자에게 보여지는 텍스트의 값을 읽어옴
+				연속되는 공백은 무시됨(=하나의 공백으로 처리)
+				원시 텍스트의 랜더링된 상태(스타일 적용 후의 모습)를 보여줌
+				
+	textContent node의 속성
+				해당 노드의 텍스트 값(=원시 텍스트)을 읽어옴
+				
+	* element와 node의 차이 
+</pre>
+  
+  <div id="d1">
+    안녕?               만나서 반가워
+    <span style="display:none;">숨겨진 텍스트</span>
+  </div>
+  
+  <input type="button" value="innerHTML" onclick="proc1()">
+  <input type="button" value="innerText" onclick="proc2()">
+  <input type="button" value="textContent" onclick="proc3()">
+  <input type="button" value="value" onclick="proc4()">
+  
+  <div id="rst"></div>
+  
+</body>
+</html>

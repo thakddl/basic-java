@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outstyle.css">
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<style>
+img {
+  width: 300px;
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <h4>LPROD - 제품정보</h4>
+    <form>
+      <div class="form-group col-md-2">
+        <label for="lprod">LPROD List</label>
+        <select id="lprod" class="form-control">
+<!--           <option>lprod1</option> -->
+<!--           <option>lprod1</option> -->
+<!--           <option>lprod1</option> -->
+<!--           <option>lprod1</option> -->
+        </select>
+      </div> 
+      <div class="form-group col-md-4">
+        <label for="prod">PROD List</label>
+        <select id="prod" class="form-control">
+<!--           <option>prod1</option> -->
+<!--           <option>prod1</option> -->
+<!--           <option>prod1</option> -->
+<!--           <option>prod1</option> -->
+        </select>
+      </div>
+      
+      <div id="detail" class="col-md-8"></div>
+    </form>
+  </div>
+<script>
+$.ajax({
+	url : '../1227/lprod.jsp',
+	//type(or method) 생략 가능- get
+	success:function(aa){
+		let code = "";
+		$.each(aa, function(i){
+			code += `<option value=${aa[i].gu}>${this.nm}</option>`;
+		});
+		$('#lprod').html(code);
+		$('#lprod').trigger('change');	//요소에 적용된 이벤트의 핸들러를 강제로 실행시킨다
+	},
+	error:function(xhr){
+		alert("상태 : " + xhr.status);
+	},
+	dataType: 'json'
+});
+
+$('#lprod').on('change',function(){
+	$.ajax({
+		url : '/webPro_sem/Prod',	// context root가 '/'일 때 url mapping만 입력
+		data : {'gu' : $(this).val()},
+		success : function(asd){
+			let code = "";
+			if(asd.code == "ok"){
+				$.each(asd.value, function(i){
+				  code += `<option value=${this.id}>${asd.value[i].nm}</option>`;
+				});
+			}else{//asd.code == no
+				code += `<option value='0'>데이터 없음</option>`;
+			}
+			$('#prod').html(code);
+			$('#prod').trigger('change');
+		},
+		error : function(xhr){
+			alert(xhr.status);
+		},
+		dataType : 'json'
+	});
+});
+
+$('#prod').on('change',function(){
+	$.ajax({
+		url : '/webPro_sem/Prod',
+		type : 'post',
+		data : {'id' : $(this).val()},
+		success : function(data){
+			if(data.code == "ok"){
+				let cd = `<table class='table table-condensed' border='1'>`;
+				cd += `<tr><td>항목</td><td>내용</td></tr>`;
+			
+				let idx = 1;
+				let size = Object.keys(data).length;
+				$.each(data,function(){
+					if(idx < size){
+					  cd += `<tr><td>${Object.keys(data)[idx]}</td>`;
+					  cd += `<td>${Object.values(data)[idx]}</td></tr>`;
+					  idx++;
+					}
+				});
+				cd += `</table>`;
+				
+				$('#detail').html(cd);
+			}else{//data.code == "no"
+				//$('#detail').html("내용없음");
+				$('#detail').empty();
+				$('#detail').append($('<img>',{
+					'src' : "../images/suzy.jpg",
+					'alt' : '수지',
+					'title' : '새해복많이받으세요 여러분'
+				}));
+			}
+		},
+		error : function(xhr){
+			alert(xhr.status);
+		},
+		dataType : 'json'
+	});
+});
+
+
+
+</script>  
+</body>
+</html>

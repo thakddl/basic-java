@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+label {
+  display: inline-block;
+  width: 70px;
+}
+span {
+  border: 1px solid red;
+  background-color: yellow;
+  display: inline-block;
+  width: auto;
+  height: 20px;
+}
+</style>
+</head>
+<body>
+  <form>
+    <label for="x">첫번째 값</label>
+    <input id="x"> <br>
+    <label for="y">두번째 값</label>
+    <input id="y"> <br>
+    <label for="rst">결과 값</label>
+    <input id="rst"> <br>
+    
+    <input type="button" value="+" onclick="calc('+')">
+    <input type="button" value="-" onclick="calc('-')">
+    <input type="button" value="*" onclick="calc('*')">
+    <input type="button" value="/" onclick="calc('/')">
+    
+    <p><label for="sp1">첫번째 값</label><span id="sp1"></span></p>
+    <p><label for="sp2">두번째 값</label><span id="sp2"></span></p>
+    <p><label for="sp3">결과 값</label><span id="sp3"></span></p>
+  </form>
+<script>
+let xVal;
+let yVal;
+function calc(a){
+	xVal = parseInt(document.getElementById('x').value);
+	yVal = parseInt(document.getElementById('y').value);
+	
+	//비교연산
+	let rst = "";
+	switch(a){
+	case '+' :
+		rst = add();
+		break;
+	case '-' :
+		rst = sub();
+		break;
+	case '*' :
+		rst = multi();
+		break;
+	case '/' :
+		rst = divd();
+		break;
+	}
+	//출력
+	document.getElementById('rst').value = rst;
+	document.getElementById('sp1').textContent = xVal;
+	document.getElementById('sp2').textContent = yVal;
+	document.getElementById('sp3').textContent = rst;
+	
+}
+function add(){
+	return xVal + yVal;
+}
+function sub(){
+	return xVal - yVal;
+}
+function multi(){
+	return xVal * yVal;
+}
+function divd(){
+	let sum = xVal / yVal;
+	return sum.toFixed(2);
+}
+</script>
+</body>
+</html>

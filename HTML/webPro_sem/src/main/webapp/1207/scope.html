@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+</head>
+<body>
+<script>
+/* 
+ * 함수단위 유효범위 - Function level Scope - var키워드
+ 	- 함수 밖에 선언한 변수는 전역 범위를 갖음
+ 	- 함수 안에 선언한 변수는 함수 밖을 제외한 내부 어디든 접근 가능
+ */
+ var a = "I'm a";
+ function foo(){
+	 var b = "I'm b";
+	 console.log(a); //전역변수로 출력가능
+	 if(true){
+		 //var키워드일 때 해당 함수내 선언 변수로서 출력가능
+		 var c = "I'm c";
+		 //let키워드의 유효범위는 블록범위
+		 //let c = "I'm c";
+		 console.log(b); 
+	 }
+	 console.log(c);
+ }
+ foo();
+ 
+ function bar(){
+	 var d = "I'm d";
+	 console.log(d); //해당 함수 내 선언한 변수로 출력가능
+	 console.log(a); //전역변수로 출력가능
+	 //console.log(b); //is not defined
+	 //console.log(c); //is not defined
+ }
+ bar();
+ 
+ /* 
+  * 블록단위 유효범위 - Block level Scope - let, const키워드
+  	- 블록은 0개 이상의 구문을 묶기위해 사용하며, 중괄호('{}')로 경계를 구분
+  	- 함수 밖에서 선언시 전역 접근이 가능하다
+  	- 블록 안에서 선언시 자신을 정의한 블록과 그 하위 블록에서만 접근 가능
+  */
+  let x = "I'm x";
+  if(true){
+	  let y = "I'm y";
+	  console.log(x);  //전역변수로 출력가능
+	  console.log(y);  //범위내 선언한 변수로 출력가능
+  }
+  console.log(x);
+  console.log(y);
+
+</script>  
+</body>
+</html>

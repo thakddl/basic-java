@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script>
+//var키워드 - 재선언,재할당 가능
+/*
+var name = "adsfasdf";
+console.log(name);
+var name = "javascript";
+console.log(name);
+*/
+
+//let키워드 - 재선언 불가, 재할당 가능
+/* 
+let name = "adsfasdf";
+console.log(name);
+name = "javascript";
+console.log(name);
+ */
+ 
+//const키워드 - 재선언,재할당 불가
+const name = "adsfasdf";
+console.log(name);
+//Assignment to constant variable : 상수변수에 할당
+name = "javascript";
+console.log(name);
+
+/* 
+ *type error 
+ 1. 자료형이 맞지 않아서 연산을 수행할 수 없을 때
+ 2. 변경할 수 없는 값을 수정하려고 할 때  
+ 3. 부적절한 방법으로 값을 사용하고자 할 때
+ */
+</script>
+</head>
+<body>
+<pre>
+	변수 키워드 3종 (var, let, const)
+	
+	var 
+	- scope : 함수 범위
+	- 변수 호이스팅 발생(=선언 이전에 참조 가능하여 비정상적인 흐름의 코드 작성을 가능하게 함)
+	- 변수 선언시 키워드 생략을 허용(=의도하지 않는 변수의 전역화 발생)
+	- 재선언, 재할당 가능
+	>> 코드의 복잡도를 높이고 오류를 발생시키는 문제가 다수 발생하여 이를 보완하기 위해
+	   ES6에서 let, const 키워드를 도입하였음
+	
+	let
+	- scope : 블록('{}')범위  
+	- 변수 사용전까지 초기화 되지 않음
+	- 변수 재선언 불가
+	- 변수 재할당 가능
+	- 변수 호이스팅 불가
+	
+	const 
+	- scope : 블록('{}')범위
+	- 변수 사용전까지 초기화 되지 않음
+	- 변수 재선언/재할당 불가
+	
+	*let과 const의 차이점은 불변(immutable)
+</pre>
+</body>
+</html>

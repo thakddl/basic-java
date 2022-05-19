@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+#d1, div {
+  border: 1px solid red;
+  background-color: yellow;
+  width: 100px;
+  height: 200px;
+  overflow: auto;
+}
+</style>
+<script>
+function randProc(){
+	
+	//console.log("랜덤 발생>> " + Math.random()*10);
+	
+	let arr = new Array();
+	for(i=0; i<5; i++){
+		//랜덤수 5개 발생
+		arr[i] = parseInt(Math.random()*10);
+	}
+	//document.getElementById('d1').innerHTML += arr + "<br>";
+	document.getElementsByTagName('div')[0].innerHTML += arr + "<br>";
+}
+</script>
+</head>
+<body>
+  <h4>함수 내 랜덤수 5개를 발생시켜 div에 출력</h4>
+  <input type="button" value="랜덤No" onclick="randProc()">
+  <br><br>
+<!--   <div id="d1"></div> -->
+  <div></div>
+</body>
+</html>

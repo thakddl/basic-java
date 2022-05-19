@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+</head>
+<body>
+<style>
+table, td {
+  border: 1px solid black;
+  text-align: center;
+}
+td {
+  width: 20px;
+}
+</style>
+<script>
+  document.write("<h1>구구단표</h1>");
+  document.write("<table>");
+  for(i=1; i<=9; i++){
+	  document.write("<tr>");
+	  document.write("<td>" + i + "</td>");
+	  for(j=2; j<=9; j++){
+		  document.write("<td>" + i*j + "</td>");
+	  }
+	  document.write("</tr>");
+  }
+  document.write("</table>");
+</script>
+</body>
+</html>

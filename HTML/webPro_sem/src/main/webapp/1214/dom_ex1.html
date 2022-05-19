@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+div {
+  font: 1.2em bold;
+  border: 1px solid gray;
+}
+</style>
+<script>
+function addtext(t){
+	let node = document.createTextNode(t);
+// 	document.getElementById('target').appendChild(node);
+	document.getElementById('target').insertBefore(node,document.getElementById('target').childNodes[0]);
+}
+</script>
+<link rel="stylesheet" href="../css/outStyle.css">
+</head>
+<body>
+  <div id="target" onclick="addtext('무궁화 꽃이 피었다')">여기를 클릭</div>
+</body>
+</html>

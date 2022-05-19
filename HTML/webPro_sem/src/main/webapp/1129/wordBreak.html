@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+.td1 {
+  word-break: break-all;
+}
+.td2 {
+  word-break: keep-all;
+}
+.td3 {
+  word-break: keep-all;
+  text-align: justify;
+}
+#tr1 {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+</style>
+</head>
+<body>
+<pre>
+	word-break : 텍스트의 줄 바뀜 스타일을 결정하는 속성
+	- break-all : 문자(글자) 단위 줄 바꿈
+	- keep-all : 단어 단위 줄 바꿈
+</pre>
+
+  <table>
+    <tr id="tr1">
+      <td class="td1">word-break:break-all(글자단위자름)</td>
+      <td class="td2">word-break:keep-all(단어단위자름)</td>
+      <td class="td3">
+        word-break:keep-all(단어단위자름) <br>
+      	text-align:justify(양쪽정렬)
+      </td>
+    </tr>
+    <tr>
+      <td class="td1">동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세.</td>
+      <td class="td2">동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세.</td>
+      <td class="td3">동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세.</td>
+    </tr>
+    <tr>
+      <td class="td1">Long live our country with God's support until the East Sea and Mt. Baekdu dry up and wear out.</td>
+      <td class="td2">Long live our country with God's support until the East Sea and Mt. Baekdu dry up and wear out.</td>
+      <td class="td3">Long live our country with God's support until the East Sea and Mt. Baekdu dry up and wear out.</td>
+    </tr>
+  </table>
+</body>
+</html>

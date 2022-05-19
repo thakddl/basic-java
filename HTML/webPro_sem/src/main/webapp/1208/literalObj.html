@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script>
+//사각형 객체를 만들고 속성과 메소드를 통해 결과값을 변형
+let rect = {
+	garo : 10,
+	sero : 12,
+	getArea : function(){
+		let area = this.garo * this.sero;
+		return area;
+	},
+	getCircum : function(){
+		return (this.garo + this.sero)*2;
+	}
+}
+let cc = rect.getCircum();
+
+let str = `가로 : ${rect.garo} <br>`;
+	str += `세로 : ${rect.sero} <br>`;
+	str += `면적 : ${rect.getArea()} <br>`;
+	str += `둘레 : ${cc} <br>`;
+	
+//속성 추가
+rect.name = `사각형`;
+str += `이름 : ${rect.name} <br>`;
+
+//사각형 대각선 구하기 메소드 추가
+rect.getDiagn = function(){
+  return Math.sqrt(Math.pow(rect.garo,2) + Math.pow(rect.sero,2));	
+}
+str += `대각선 : ${rect.getDiagn().toFixed(4)} <br>`;
+
+//속성 삭제
+delete rect.name;
+str += `(삭제후)이름 : ${rect.name} <br>`;
+
+//메소드는 삭제 불가
+//delete usually works for variables but it doesn't work for functions
+delete rect.getDiagn();
+str += `(삭제후)대각선 : ${rect.getDiagn()}`;
+
+//모든 문서를 모두 로딩시킨 후 스크립트를 실행하도록 하는 명령
+window.onload=function(){
+	document.getElementById('d1').innerHTML = str;
+}
+</script>
+</head>
+<body>
+  <div id="d1"></div>
+</body>
+</html>

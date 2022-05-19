@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script>
+function input(){
+	
+	let arr = new Array();
+	while(true){
+		let name = prompt("이름을 입력하세요");
+		if(name == " " || name == null) break;
+		arr.push(name);
+	}
+	document.getElementsByTagName('div')[0].textContent = arr;
+}
+function output(){
+	
+	let arr = new Array();
+	while(true){
+		let num = prompt("수를 입력하세요");
+		
+		//중복여부 확인 - indexOf() 메소드를 통해 값이 없는 경우 -1 반환받음
+		let idx = arr.indexOf(num);
+		//비교
+		if(idx != -1){
+			alert("중복 값입니다~");	
+		}else{
+			arr.push(num);
+		}
+		//갯수체크
+		if(arr.length >= 5) break;
+	}
+	document.getElementsByTagName('div')[1].textContent = arr;	
+}
+
+</script>
+</head>
+<body>
+  <h4>이름을 계속 입력받아 출력</h4>
+  <input type="button" value="입력" onclick="input()">
+  <div></div>
+  
+  <h4>중복되지 않는 정수 5개 출력</h4>
+  <input type="button" value="출력" onclick="output()">
+  <div></div>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+div {
+  display: list-item;
+  margin: 20px;
+}
+</style>
+<script>
+let arr = ["홍길동","고길동","둘리","도우너","또치","희동이","고길동","철수","영희","김은대"];
+function proc1(name){
+	let idx = arr.indexOf(name);
+	//출력정보 입력
+	let str = `indexOf로 찾은 이름 ${name}은`;
+		str += ` ${idx}번째에 있어요~~ <br>`;
+	//출력
+	document.getElementById('d1').innerHTML = str;
+}
+function proc2(nm){
+	let idx = arr.lastIndexOf(nm, 5);
+	//출력정보 입력
+	let str = `lastIndexOf로 찾은 이름 ${nm}은`;
+		str += ` ${idx}번째에 있어요~~ <br>`;
+	//출력
+	document.getElementById('d2').innerHTML = str;
+}
+//이름이 여러개인 경우 모두 찾기
+function proc3(a){
+	let idx = 0;
+	let str_idx = "";
+	
+	while(true){
+		idx = arr.indexOf(a, idx); //index 0부터 찾(=배열 처음부터 찾음)아서 idx변수에 위치 idx저장 
+		if(idx == -1) break;
+		str_idx += `${idx}번째 `;
+		idx++; //반환받은 index 이후의 값을 찾기위해 증가 >> indexOf() 메소드에 start값으로 대입됨
+	}
+	//출력정보입력
+	let str = `찾는 이름 ${a}은`;
+		str += `${str_idx}에 있어요~~<br>`;
+	//출력
+	document.getElementById('d3').innerHTML = str;	
+}
+let proc4=function(){
+	
+	let name = prompt("이름을 입력하세요");
+	let idx = arr.indexOf(name);
+	let str = "";
+	
+	if(idx == -1){
+		str += `찾는 이름이 없어요~`;
+	} else{
+		str += `${name}님은 ${idx}번째에 있네요! `;
+		str += `<a href='detail.jsp?name=${name}'>상세보기</a>`;
+	}
+	document.getElementById('d4').innerHTML = str;
+}
+</script>
+</head>
+<body>
+<pre>
+	indexOf(value, start)
+	: value - 찾을 문자열(필수요소)
+	  start - 검색을 시작할 index (선택요소/미입력 시 처음부터 검색)
+	
+	lastIndexOf(value, end)
+	: value - 찾을 문자열(필수요소)
+	  end - 검색을 끝낼 index (선택요소/미입력 시 끝까지 검색)
+	 
+	대소문자를 구분한다
+	찾는 문자열이 없을 경우 -1을 반환한다 
+</pre>
+  <p>["홍길동","고길동","둘리","도우너","또치","희동이","고길동","철수","영희","김은대"]</p>
+  
+  <input type="button" value="indexOf" onclick="proc1('도우너')">
+  <input type="button" value="lastIndexOf" onclick="proc2('고길동')">
+  <input type="button" value="indexOf" onclick="proc3('고길동')">
+  <input type="button" value="indexOf" onclick="proc4()">
+  
+  <div id="d1"></div>
+  <div id="d2"></div>
+  <div id="d3"></div>
+  <div id="d4"></div>
+  
+</body>
+</html>

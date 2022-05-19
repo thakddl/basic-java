@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+pre {
+  column-count: 2;
+}
+ul {
+  border: 1px dashed orange;
+  margin: 0px 20px;
+}
+li {
+  border: 1px solid brown;
+}
+</style>
+</head>
+<body>
+<span>노드밸류</span>
+<pre>
+  &lt;ul id="myList">
+  
+    &lt;li id="li1">Coffee&lt;/li>
+  
+    &lt;li id="li2">Tea&lt;/li>
+  
+  &lt;/ul>
+  
+  <ul id="myList">
+    <li id="li1">Coffee</li>
+    <li id="li2">Tea</li>
+  </ul>
+</pre>
+
+<script>
+
+/* 속성 */
+document.write("parentElement | " 
+	+ document.getElementById("li1").parentElement.nodeName + "<br>");
+
+document.write("children | "
+	+ document.body.children[0].tagName + "<br>");		
+
+document.write("first(last)ElementChild | "
+	+ document.getElementById("myList").lastElementChild.innerText + "<br>");
+
+document.write("next(previous)ElementSibling | "
+	+ document.getElementById("li2").previousElementSibling.innerText + "<br><br>");
+
+document.write("parentNode | "
+	+ document.getElementById("li1").parentNode.nodeName + "<br>");
+
+//childNodes : 주석과 텍스트 등 문서의 모든 Node를 자식으로 취한다
+document.write("childNodes | "
+	+ document.body.childNodes[0].nodeName + "<br>");
+	
+document.write("first(last)Child | "
+	+ document.getElementById("myList").firstChild.innerHTML + "<br>");	
+// 	+ document.getElementById("myList").lastChild.nodeName + "<br>");	
+
+//일시적으로 태그요소를 붙여서 공백을 제거하고 결과를 확인해 봄
+//주석이나 공백등으로 표시되는 노드는 nodeName으로 확인하며,
+//	innerText등으로 결과를 볼 수 없다(=undefined)
+document.write("next(previous)Sibling | "
+// 	+ document.getElementById("li1").nextSibling.innerText + "<br><br>");
+	+ document.getElementById("li2").previousSibling.innerText + "<br><br>");
+
+document.write("nodeValue | "
+	+ document.body.childNodes[1].firstChild.nodeValue);
+
+
+
+</script>
+</body>
+</html>

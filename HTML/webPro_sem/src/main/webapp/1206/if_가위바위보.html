@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script>
+play=function(){
+	let a = prompt("첫번째 사람 입력", "가위,바위,보 중 입력");
+	let b = prompt("두번째 사람 입력", "가위,바위,보 중 입력");
+	let c;
+	if(a==b){
+		c = "비겼네요";
+	}else if(a=="가위" && b=="보" ||
+			a=="바위" && b=="가위" ||
+			a=="보" && b=="바위"){
+		c = "첫번째 사람 승!";
+	}else{
+		c = "두번째 사람 승!";
+	}
+	/* let str = "첫번째 사람 : " + a + "<br>";
+	str += "두번째 사람 : " + b + "<br>";
+	str += "결과 : " + c; */
+	
+	//ES6 백틱(backtick/grave accent)
+	//문자열과 변수의 값을 하나의 문자열 안에 기술할 수 있음
+	//백틱문자열 안에 변수는 ${} 기호 안쪽에 기술한다
+	//백틱을 사용해 만들어진 문자열을 템플릿 리터럴 이라고 한다
+	let str = `첫번 째 사람 :  ${a} <br>`;
+	str += `두번 째 사람 : ${b} <br>`;
+	str += `결 과 : ${c}`;
+	document.getElementById('d1').innerHTML = str;
+}
+</script>
+</head>
+<body>
+  <input type="button" value="가위바위보" onclick="play()">
+  <div id="d1"></div>
+</body>
+</html>

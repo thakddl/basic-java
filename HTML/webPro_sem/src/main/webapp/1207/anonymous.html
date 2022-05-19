@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+</head>
+<body>
+<script>
+//일반적인 함수(=기명함수,선언식함수)
+//브라우저 런타임 이전에 선언되고 호출(call)하여 사용
+//호이스팅 가능
+function sum(a,b){
+	let c = a+b;
+	return c;
+}
+console.log("선언식함수>> " + sum(1));
+
+//표현식 함수(=무명함수, 익명함수)
+//브라우저 런타임에 동적으로 선언됨
+//생성된 함수를 변수에 할당하여 사용하는 형태
+//호이스팅 대상이 아님
+var sum=function(a,b){
+	let c = a*b;
+	return c;
+}
+console.log("표현식함수>> " + sum(2,3));
+
+//즉시실행함수(=무명함수,익명함수)
+(function(str){
+	alert(str);
+})("안녕하세요?");
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+a {
+  text-decoration: none;
+}
+a:link {
+  color: lime;
+}
+a:visited {
+  color: red;
+}
+a:hover {
+  color: pink;
+  font-size: 1.2em;
+  text-decoration: underline;
+}
+a:active {
+  color: gold;
+  background-color: navy;
+}
+.p1:nth-child(odd) {
+/*   background-color: gray; */
+  background-color: rgba(0,0,255,0.1);
+  
+}
+.p1:nth-child(even) {
+/*   background-color: lightgray; */
+  background-color: rgba(60%,10%,30%,0.1);
+}
+.p1:first-child {
+/*   color: red; */
+/* RED/GREEN/BLUE */
+  color: #00FF00;
+}
+.p1:nth-child(4) {
+  color: lime;
+}
+
+</style>
+</head>
+<body>
+<pre>
+	psuedo class 의사클래스 가상클래스
+	상태 또는 구조에 의한 선택 방법
+	상태 - :link, :visited, :hover, :active
+	구조 - :nth-child(n), :nth-child(odd/even)-홀수/짝수
+</pre>
+  <div>
+    <a href="http://www.w3schools.com">W3Schools</a>
+    <a href="http://www.ddit.or.kr">대덕인재개발원</a>
+    <a href="http://www.cgv.com">CGV</a>
+    <a href="http://www.pizzahut.co.kr">피자헛</a>
+  </div>
+  
+  <div>
+    <p class="p1">디즈니+</p>
+    <p class="p1">넷플릭스</p>
+    <p class="p1">디즈니+</p>
+    <p class="p1">넷플릭스</p>
+    <p class="p1">디즈니+</p>
+    <p class="p1">넷플릭스</p>
+    <p class="p1">디즈니+</p>
+    <p class="p1">넷플릭스</p>
+    <p class="p1">디즈니+</p>
+    <p class="p1">넷플릭스</p>
+  </div>
+
+
+</body>
+</html>

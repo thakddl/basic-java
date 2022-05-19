@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<pre>
+	property : element가 갖는 실제적인 상태(disabled, checked, selected 등) 제어
+	attribute : element가 갖는 속성이나 정보(style, src 등) 조회, 적용	
+
+	$(this).prop("tagName") / this.tagName
+	$(this).prop("checked")	/ this.checked
+	$(this).attr("name")	/ this.name, this.getAttribute('name')
+	$(this).attr("type")	/ this.type, this.getAttribute('type')
+</pre>
+  <div class="box">
+    <form id="testForm">
+      <input type="hidden" name="userAge" value="33">
+      <input type="hidden" name="userCity" value="대전">
+      
+      ID : <input type="text" name="userId" value="hong">
+      <span style="display:none">ID가 중복됩니다</span> <br>
+      
+      이름 : <input type="text" name="userName" value="홍길동">
+      <span style="visibility: hidden">이름을 입력하세요</span> <br>
+      
+      성별 : <input type="radio" name="sung" value="남" checked>남
+      <input type="radio" value="여">여
+    </form>
+  </div>
+  
+  <input type="button" value="hidden" id="btn1">
+  <input type="button" value="visible" id="btn2">
+  <div id="hidden"></div>
+  <div id="visible"></div>
+
+<script>
+$('#btn1').on('click',function(){
+	let str = "<h4>hidden 결과</h4>";
+	$('#testForm *:hidden').each(function(){
+		//input일 때
+		if(this.tagName == "INPUT"){
+			str += $(this).prop('tagName') + "의 "
+					+ $(this).attr('type') + "객체["
+					+ $(this).attr('name')
+					+ $(this).val() + "]<br>";
+		//input이 아닐때
+		}else {
+			str += this.tagName + ":" + $(this).text() + "<br>";		
+		}
+	});
+	$('#hidden').html(str);
+});
+
+$('input[value="visible"]').on('click',function(){
+	let str = "<h4>visible 결과</h4>";
+	$('form *:visible').each(function(){
+		//input요소일때
+		if($(this).prop('tagName') == "INPUT"){
+			let vType = $(this).attr('type');
+			//input 요소 중 type이 text일 때
+			if(vType == 'text'){
+				str += $(this).prop('tagName') + "의 "
+				+ $(this).attr('type') + "객체["
+				+ $(this).attr('name')
+				+ $(this).val() + "]<br>";
+			//input 요소 중 type이 radio일 때			
+			}else if(vType == 'radio'){
+				if(this.checked){
+					str += $(this).attr('name') 
+							+ ":" + $(this).val() + "<br>";
+				}
+			}
+		//보여지는 요소 중 <br>태그는 제외시킴 
+		}else if(this.tagName != 'BR'){
+			str += this.tagName + ":" + $(this).text() + "<br>";
+		}
+	});
+	$('#visible').html(str);
+});
+
+</script>
+
+</body>
+</html>

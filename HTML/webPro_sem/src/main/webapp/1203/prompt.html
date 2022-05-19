@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+</head>
+<body>
+  <script>
+    var x,y;
+    var input;
+    input = prompt("정수를 입력하세요");
+    x = parseInt(input);
+    input = prompt("정수를 입력하세요", "정수");
+    y = parseInt(input);
+    
+    //덧셈연산은 왼쪽에서 오른쪽으로 진행되며 문자열과 결합하면 문자열로 변환
+    document.write("" + x + y + "<br>");
+  </script>
+</body>
+</html>

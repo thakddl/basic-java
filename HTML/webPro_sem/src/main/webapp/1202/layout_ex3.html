@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+header {
+  height: 150px;
+  background-color: gold;
+}
+header p {
+  text-align: center;
+}
+nav {
+  width: calc(30% - 10px);
+  height: 400px;
+  background-color: hotpink;
+  float: left;
+}
+nav div {
+  margin-left: 50px;
+}
+ul {
+  list-style-position: inside;
+}
+main {
+  width: calc(70% - 10px);
+  height: 400px;
+  background-color: rgb(0,250,0,.3);
+  float: right;
+}
+.m1 {
+  height: 120px;
+  border: 1px dotted green;
+  border-radius: 35px;
+  background-color: rgba(0,200,0,.3);
+/*   opacity: 0.3; */
+  padding: 20px;
+  margin: 20px;
+}
+main h3, main article {
+  color: black;
+}
+span {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+footer {
+  height: 50px;
+  background-color: rgba(0,0,255,0.3);
+/*   opacity: 0.3; */
+  clear: both;
+}
+footer, h1 {
+  text-align: center;
+}
+img {
+  width: 100px;
+}
+.ws {
+  margin: 5px;
+  padding: 10px;
+  border-radius: 30px;
+  box-sizing: border-box;
+}
+a:link {
+  color: white;
+}
+a:visited {
+  color: yellow;
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+  <header class="ws">
+    <h1>My Blog Page</h1>
+    <p>시멘틱 태그로 만들어진 페이지 입니다</p>
+  </header>
+  <nav class="ws">
+    <h3>Links</h3>
+    <ul>
+      <li><a href="http://www.w3schools.com">w3schools</a></li>
+      <li><a href="http://www.naver.com">Naver</a></li>
+      <li><a href="http://www.daum.net">Daum</a></li>
+    </ul>
+    <div>
+      <img src="../images/spg.png" alt="스폰지밥">
+      <p>스폰지밥</p>
+    </div>
+  </nav>
+  <main class="ws">
+    <div class="m1">
+      <span>semantic Tags</span> <br><br>
+      <article>
+        시맨틱 요소(semantic elements)들은 브라우저에게 요소의 의미나 목적을 명확하게 알려주는 요소ㅇ다. 
+        레이아웃을 만들때 쓰는것. 의미가 있는 요소라면 div보다는 시맨틱 태그를 사용해준다.
+      </article>
+    </div>
+    <div class="m1">
+      <span>div와 span</span> <br><br>
+      <article>
+        시맨틱 요소(semantic elements)들은 브라우저에게 요소의 의미나 목적을 명확하게 알려주는 요소ㅇ다. 
+        레이아웃을 만들때 쓰는것. 의미가 있는 요소라면 div보다는 시맨틱 태그를 사용해준다.
+      </article>
+    </div>
+  </main>
+  <footer class="ws">Copyright (c)2021 Lee</footer>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+img {
+  width: 200px;
+  position: relative;
+}
+p {
+  position: relative;
+}
+</style>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <input type="button" id="btn1" value="확인">
+  <br><br>
+  <img src="../images/iu.jpg" alt="iu"> 
+  
+  <hr>
+  
+  <input type="button" id="btn2" value="확인">
+  <p>iu-금요일에 만나요</p>
+
+<script>
+$('#btn1').on('click',function(){
+	$('img').animate({right : '-=100'})
+			.delay(100)
+			.animate({opacity : '0.1'})
+// 		  .animate({left : '-=100'}, 100)
+			.animate({right : '+=100'})
+			.delay(100)
+			.animate({opacity : '1'});
+});
+$('#btn2').on('click',function(){
+	
+	setInterval(function(){
+		$('p').animate({left : '+=100'},500)
+		//queue()에 적용한 함수를 반환하거나 추가한다	
+		//queue()를 실행하면 실행 이후 모든 애니메이션이 취소된다
+				.queue(function(){
+					let r = parseInt(Math.random()*256);
+					let g = parseInt(Math.random()*256);
+					let b = parseInt(Math.random()*256);
+					$(this).css('color','rgb('+r+','+g+','+b+')');
+					//queue() 사용시에 반드시 dequeue()를 호출하여 다음 대기열을 실행하도록 한다
+					$(this).dequeue();
+				})
+				.animate({'font-size' : '+=10px'},500)
+				.animate({left : '-=100'},500)
+				.queue(function(){
+					let r = parseInt(Math.random()*256);
+					let g = parseInt(Math.random()*256);
+					let b = parseInt(Math.random()*256);
+					$(this).css('color',`rgb(${r},${g},${b})`);
+					//queue() 사용시에 반드시 dequeue()를 호출하여 다음 대기열을 실행하도록 한다
+					$(this).dequeue();
+				})
+				.animate({'font-size' : '-=10px'},500);
+	},3000);
+});
+
+</script>
+</body>
+</html>

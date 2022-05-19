@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script>
+function proc(t){
+	//t.style.display = "none";
+	t.hide();	//매개변수 t는 DOM객체 이므로 jQuery메소드 사용불가
+	$(t).hide();//$()에 DOM객체를 인수로 전달하여 jQuery객체로 만들어 사용한다
+}
+
+//$(document).ready(function(){});
+$(function(){
+	$('#jq h2').on('click',function(){
+		$(this).hide();
+		//모든 요소가 숨겨졌을 때 버튼 보이기
+		if($('#jq h2:visible').length < 1){
+			$('#jq button').show();
+		}
+	});
+	
+	$('#jq button').on('click',function(){
+		$('#jq h2').show();
+		$(this).hide();
+	});
+});
+
+
+</script>
+<style>
+button {
+  display: none;
+}
+</style>
+</head>
+<body>
+<pre>
+	JavaScript방식으로 함수 호출
+	함수의 인자값으로 this를 전달
+</pre>
+  <h2 onclick="proc(this)">클릭하면 사라집니다1</h2>
+  <h2 onclick="proc(this)">클릭하면 사라집니다2</h2>
+  <h2 onclick="proc(this)">클릭하면 사라집니다3</h2>
+  <h2 onclick="proc(this)">클릭하면 사라집니다4</h2>
+  <h2 onclick="proc(this)">클릭하면 사라집니다5</h2>
+  
+  <hr>
+  
+  <div id="jq">
+    <h2>클릭하면 사라집니다1</h2>
+    <h2>클릭하면 사라집니다2</h2>
+    <h2>클릭하면 사라집니다3</h2>
+    <h2>클릭하면 사라집니다4</h2>
+    <h2>클릭하면 사라집니다5</h2>
+    <h2>클릭하면 사라집니다6</h2>
+    <button type="button">보이기</button>
+  </div>
+  
+  
+</body>
+</html>

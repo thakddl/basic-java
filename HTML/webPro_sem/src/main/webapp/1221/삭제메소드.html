@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+div {
+  background-color: yellow;
+  height: 25px;
+}
+p {
+  border: 3px solid gray; 
+}
+</style>
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <input type="button" value="empty" id="btn1">
+  <input type="button" value="remove" id="btn2">
+  <input type="button" value="remove_sel" id="btn3">
+  <br>
+  <div id="d1">
+    <p>Hello jQuery</p>
+  </div>
+  <div id="d2">
+    <p>Hi jQuery</p>
+  </div>
+  <p>안녕하세요</p>
+  <p id="pp">jQuery입니다</p>
+<script>
+$('#btn1').on('click',function(){
+	$('#d1').empty();
+});
+$('#btn2').on('click',function(){
+	$('#d2').remove();
+});
+$('#btn3').on('click',function(){
+	$('p').remove('#pp');
+});
+</script>
+</body>
+</html>

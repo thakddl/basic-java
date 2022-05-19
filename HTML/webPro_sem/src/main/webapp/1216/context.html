@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	$('p').css('background','cyan');
+
+	//div클릭했을때
+	$('div').on('click',function(){
+		let cr = parseInt(Math.random()*256);
+		let cg = Math.floor(Math.random()*256);
+		let cb = parseInt(Math.random()*256);
+		//context로 div영역 안 p요소만 선택
+		//method chaining
+		$('p',this).css('color',`rgb(${cr},${cg},${cb})`)
+					.css('font-weight','bold')
+					.css('font-style','italic')
+					.css('font-size','2.5em');
+	});
+	
+});
+</script>
+</head>
+<body>
+<pre>
+	$('selector',context)
+	선택자를 검색할 범위를 설정하며, 생략시 문서 전체에서 선택자를 검색
+</pre>
+  <p>(p)함박눈이 펑펑</p>
+  <p>(p)무궁화 꽃이 피었다</p>
+  <div id="d1">
+    <p>(div>p)#d1속 p태그1</p>
+  </div>
+  <div>
+    <p>(div>p)#d1속 p태그2</p>
+  </div>
+</body>
+</html>

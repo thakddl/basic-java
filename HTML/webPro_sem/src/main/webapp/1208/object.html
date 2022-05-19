@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+</head>
+<body>
+<script>
+//1. 객체 생성 - 리터럴 방식
+//중괄호 이용해 객체 생성. {}안에 아무것도 넣지 않을 경우 빈 객체를 생성
+// {property:property value} 
+//프로퍼티의 값이 함수일 경우 메소드라 지칭한다
+
+let myObj = {
+		name : "아이유",
+		age : 25,
+		hello : function(){
+			return `이름은 ${this.name}이고, 나이는 ${this.age}입니다`;
+		}
+}
+console.log(myObj);
+console.log(myObj.name);
+console.log(myObj.hello());
+console.log(Object.keys(myObj));
+console.log(Object.values(myObj));
+console.log(Object.entries(myObj));
+
+//2. 객체 생성 - 생성자 방식 (new Constructor() 방식으로 객체 생성)
+//2-1. new연산자를 통해 Object객체의 생성자 함수를 호출하여 객체 생성
+let myObj2 = new Object();
+myObj2.name = "아니유";
+myObj2["age"] = 30;
+myObj2.hello = function(){
+	return "이름은 " + this.name + "이고, 나이는 " + this.age + "입니다";
+}
+console.log(myObj2);
+console.log(myObj2.hello());
+
+//2-2. new연산자를 통해 String, Array 객체 생성
+let strObj = new String("hello");
+console.log(Object.keys(strObj));
+console.log(Object.values(strObj));
+
+let arrObj = new Array([1,2,3],[4,5]);
+console.log(Object.keys(arrObj));
+console.log(Object.values(arrObj));
+
+//3. 사용자 정의 생성자 : 직접 생성자 함수를 만들고 객체 생성
+//생성자 함수 생성 - 대문자로 
+let SelfObj = function(name, age){
+	this.name = name;
+	this.age = age;
+	this.hello = function(){
+		return `이름은 ${this.name}이고, 나이는 ${this.age}입니다`;
+	}
+}
+let selfObj = new SelfObj('IU','29');
+console.log(selfObj);
+console.log(selfObj.hello());
+/* 
+프로퍼티(속성)와 메소드 접근 방법
+1. 객체.key >> 마침표(. dot Notation)를 통해 접근하기
+2. 객체["key"] >> 대괄호 안에 key를 문자열로 넣어 접근하기
+*key가 문자열로 표현되지 않을 경우(=따옴표 쓰지 않은 경우) 변수로 인식하므로 주의
+3. 변수로 참조하기
+let key = "age";
+myObj[key]
+ */
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+img {
+  width: 50px;
+  height: 50px;
+}
+</style>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function(){
+	//get-첫번째 항목만 반환
+	//console.log($('img').attr('src'));
+	
+	//set-모든 항목에 동일한 속성 값을 적용
+	$('img').attr('title','동일타이틀');
+	
+	//함수 내부에서 리턴하는 값으로 title의 속성 값을 적용한다
+	$('img').attr('title',function(){
+		//첫번째 항목만 반환하는 img요소 대신
+		//let vsrc = $('img').attr('src');
+		//함수안에서 내부적으로 for문을 도는 this를 활용해 속성 가져오기
+		let vsrc = $(this).attr('src');
+		console.log(vsrc);
+		//이미지 이름 추출하기
+		let start = vsrc.lastIndexOf("/") + 1;
+		let end = vsrc.lastIndexOf(".");
+		let vname = vsrc.substring(start,end);
+		console.log(vname);
+		return vname;
+	});
+	
+	//속성 제거
+	$('img').eq(3).removeAttr('src');
+	
+	//여러 속성 설정
+	$('img').eq(3).attr({'src':'../imaㄴges/iu.jpg'
+						,'alt':'아이유'
+						,'title':'좋은날'});
+});
+</script>
+</head>
+<body>
+  <h4>img요소의 src속성에서 파일명만 추출하여 title속성으로 설정하기</h4>
+  <div class="box">
+    <img src="../images/국화.jpg" alt="">
+    <img src="../images/수국.jpg" alt="">
+    <img src="../images/사막.jpg" alt="">
+    <img src="../images/대나무숲.jpg" alt="">
+    <img src="../images/Tulips.jpg" alt="">
+  </div>
+</body>
+</html>

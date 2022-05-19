@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div class="box">
+    <form>
+      <input type="text" id="t" disabled> <br>
+      <input type="password" id="p" disabled> <br>
+      <select disabled id="s">
+        <option>option1</option>
+        <option>option2</option>
+        <option>option3</option>
+        <option>option4</option>
+      </select>
+      <br>
+      <textarea id="ta" disabled>text</textarea> <br>
+      <input type="button" value="확인" onclick="alert('hello')" disabled>
+    </form>
+  </div>
+<script>
+// 속성변경 - 자바스크립트 방식 - 단일 요소에 적용
+//document.getElementById('p').removeAttribute('disabled');
+// 속성변경 - jQuery 방식 - 일괄 적용
+// $('*').attr('disabled',false);
+
+$('form *:enabled').css('border','3px solid blue');
+$('form *:disabled').css('border','3px solid red');
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+div {
+  height: 40px;
+  border-radius: 20px;
+  border: 1px solid;
+  padding: 10px;
+  margin: 10px;
+}
+</style>
+<script>
+let a = "";
+let okBtn = "";
+function proc(btn){ //자신을 참조하는 this키워드를 이용해 button을 전달받음
+	btn.style.display = "none";
+	//btn.setAttribute('disabled',true);
+	okBtn = btn;
+	
+	a = setInterval(function(){
+		//10진수 색상 생성
+		let cr = parseInt(Math.random()*256);
+		let cg = parseInt(Math.random()*256);
+		let cb = parseInt(Math.random()*256);
+		
+		//16진수 색상 생성
+		cr = cr.toString(16);
+		cg = cg.toString(16);
+		cb = cb.toString(16);
+		
+		document.getElementsByTagName('div')[0]
+//			.style.background = `rgb(${cr},${cg},${cb})`; //10진수
+			.style.background = `#${cr}${cg}${cb}`;		  //16진수
+	},1000);
+	console.log(a);
+}
+function clr(){
+	//alert();
+	clearInterval(a);
+	//btn에 접근해서 스타일 변경필요
+	okBtn.style.display = "inline";
+	//okBtn.removeAttribute('disabled');
+}
+</script>
+</head>
+<body>
+  <input type="button" value="setInterval" onclick="proc(this)">
+  <input type="button" value="clearInterval" onclick="clr()">
+  <div>
+  	setInterval(fn,ms) : ms에 지정된 시간이 경과될 때마다 배경색 바꾸기 <br>
+  	random() 이용해서 배경색 지정하기
+  </div>
+</body>
+</html>

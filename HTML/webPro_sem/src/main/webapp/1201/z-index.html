@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+div {
+  border: 1px solid orange;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  margin-top: 100px;
+}
+#d1{
+  background: lightblue;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+}
+#d2{
+  background: lightgreen;
+  top: 30px;
+  left: 30px;
+  z-index: -1;
+}
+#d3{
+  background: pink;
+  top: 50px;
+  left: 50px;
+}
+#d4{
+  background: yellow;
+  top: 70px;
+  left: 70px;
+}
+</style>
+</head>
+<body>
+<pre>
+	z-index : 여러 포지션이 겹쳐있을 때, 위치를 변경하여 위로 보여지게 만듦
+			  값이 클수록 위로 올라온다
+</pre>
+  <div id="d1">1</div>
+  <div id="d2">2</div>
+  <div id="d3">3</div>
+  <div id="d4">4</div>
+</body>
+</html>

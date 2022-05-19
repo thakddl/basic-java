@@ -1,0 +1,22 @@
+@charset "UTF-8";
+pre {
+  background: gold;
+}
+.box {
+  border: 2px solid green;
+  margin: 10px;
+  padding: 10px;
+}
+/* 
+CSS적용방법 
+External(외부 - 외부 css파일)
+Internal(내부 - style태그 영역)
+inline(태그 속성으로)
+
+inline > External = Internal
+inline으로 작성하지 않는다 (웹표준에 위배)
+내부와 외부의 우선순위는 소스 코드 상 아래쪽에 작성된 것이 적용
+*/
+fieldset {
+  background-color: orange;
+}

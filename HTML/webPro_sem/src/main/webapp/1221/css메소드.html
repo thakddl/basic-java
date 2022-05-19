@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+img {
+  width: 120px;
+  height: 120px;
+}
+div {
+  padding: 20px;
+  margin: 10px;
+}
+.pColor {
+  color: blue;
+}
+.pBack {
+  background-color: yellow;
+}
+.pBack1 {
+  background-color: purple;
+}
+.pBack2 {
+  background-color: teal;
+}
+.borderBlue {
+  border: 2px solid blue;
+  border-radius: 50%;
+}
+.borderRed {
+  border: 2px solid red;
+  border-radius: 50%;
+}
+</style>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+  $('#btn').on('click',function(){
+	  //$('p').css('color','red');
+	  $('p').addClass('pColor');
+  });
+  $('p').on('click',function(){
+	  $(this).addClass('pBack');
+	
+	  //hasClass를 이용한 add-remove
+	  /* if($(this).hasClass('pBack1')){
+		  $(this).removeClass('pBack1');
+	  }else{
+		  $(this).addClass('pBack1');
+	  } */
+	  
+	  $(this).toggleClass('pBack2');
+  });
+  
+  $('div:empty').on('mouseover',function(){
+	  $(this).addClass('pBack1');
+  });
+  $('div:empty').on('mouseout',function(){
+	  $(this).removeClass('pBack1');
+  });
+  
+  /* $('img').on('mouseover',function(){
+	  $(this).addClass('borderBlue');
+  });
+  $('img').on('mouseout',function(){
+	  $(this).removeClass('borderBlue');
+  }); */
+  
+  /* $('img').hover(function(){
+	  $(this).addClass('borderRed');
+  }, function(){
+	  $(this).removeClass('borderRed');
+  }); */
+  
+  $('img').on('click',function(){
+	  $(this).toggleClass('borderBlue');
+  });
+
+});
+</script>
+</head>
+<body>
+  <div class="box">
+    <input type="button" id="btn" value="확인">
+    <p>Click!!</p>
+    <p>Click!!</p>
+    <p>Click!!</p>
+    <p>Click!!</p>
+    <p>Click!!</p>
+    
+    <div></div>
+    
+    <img src="../images/국화.jpg" alt="국화">
+    <img src="../images/사막.jpg" alt="사막">
+    <img src="../images/대나무숲.jpg" alt="대나무숲">
+    <img src="../images/Tulips.jpg" alt="튤립">
+    <img src="../images/수국.jpg" alt="수국">
+  </div>
+</body>
+</html>

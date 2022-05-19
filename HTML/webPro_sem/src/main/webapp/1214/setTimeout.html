@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+div {
+  height: 20px;
+  border-radius: 20px;
+  border: 1px solid;
+  padding: 40px;
+  margin: 10px;
+}
+</style>
+<script>
+function proc(){
+	setTimeout(function(){
+	let d = document.getElementsByTagName('div')[0];
+	d.style.background = "green";
+	},1000)
+}
+/* function proc(){
+	setTimeout(divStyle, 3000);
+} */
+let divStyle = function(){
+	let d = document.getElementsByTagName('div')[0];
+	d.style.background = "red";
+}
+
+
+</script>
+</head>
+<body>
+  <input type="button" value="setTimeout" onclick="proc()">
+  <div>setTimeout(fn,ms) : ms에 지정된 시간 경과 시 배경색 바꾸기</div>
+</body>
+</html>

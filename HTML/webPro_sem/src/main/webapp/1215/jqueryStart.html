@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<!-- CDN방식으로 사용하기 -->
+<!-- <script src="https://code.jquery.com/jquery-latest.min.js"></script> -->
+<!-- DOWNLOAD방식으로 사용하기 -->
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+function proc(){
+	document.getElementById('d1')
+		.textContent = "안녕!! script!!";
+}
+//jQuery방식
+//document를 먼저 실행시켜 오류 방지 = window.onload=function(){}
+$(document).ready(function(){
+	$('#btn1').on('click',function(){
+		$('#d2').html("안녕하세요 jQuery입니다..");
+	});
+}); 
+
+</script>
+</head>
+<body>
+  <h4>JavaScript방식</h4>
+  <input type="button" value="확인" onclick="proc()">
+  <div id="d1"></div>
+  
+  <h4>jQuery방식</h4>
+  <input type="button" value="확인" id="btn1">
+  <div id="d2"></div>
+  
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script>
+  var a;
+  document.write("typeof a : " + typeof a + "<br>");
+  var a = 3;
+  document.write("typeof a=3 : " + typeof a + "<br>");
+  var a = "javascript";
+  document.write("typeof a=javascript : " + typeof a + "<br>");
+  var a = true;
+  document.write("typeof a=true : " + typeof a + "<br>");
+  var a = ["html","css","javascript"];
+  document.write("typeof a=[array] : " + typeof a + "<br>");
+  function a(){};
+  document.write("fn a(){} : " + typeof a + "<br>");
+  var a = function a(){};
+  document.write("var a = fn(){} : " + typeof a + "<br>");
+  //new
+  let b = Symbol("심볼의 설명");
+  document.write("let b = Symbol() : " + typeof b + "<br>");
+  
+  //자바스크립트는 문자형으로의 자동형변환이 자유로운 편이지만 심볼은 예외이다(=자동형변환 안됌)
+  //문자열과 심볼은 근본이 다르기 때문에 타입이 변환되면 안됌
+  var sb = Symbol("symbol의 설명");
+  //alert(sb);
+  //반드시 출력해야 할때는 toString() 메소드를 사용한다
+  //alert(sb.toString());
+  alert(sb.description);
+  
+  //숨겨진 상태로 외부에서 접근 불가
+  var std2 = Symbol();
+  const class404 = {
+		tc: "lyj",
+		std1: "hsh",
+		std2: "ksw",
+		[std2]: "kjh",
+		std3: "ksj"
+  }
+  console.log(Object.keys(class404));
+</script>
+</head>
+<body>
+<pre>
+	typeof : 변수의 데이터 타입을 반환하는 연산자
+	
+	원시타입(primitive data type)
+	string : 데이터의 타입이 문자열
+	number : 데이터의 타입이 숫자
+	boolean : 데이터 타입이 불리언
+	null : 지정되지 않은 빈 상태 
+	undefined : 변수가 정의되지 않았거나 값이 없을 때
+	object(또는 function) : 데이터 타입이 함수, 배열 등의 객체
+	-------------------------------------------------
+	ES6에서 추가된 7번째 원시 타입 Symbol
+	: (이름의) 충돌 위험이 없는 객체의 유일한 프로퍼티 키를 만들기 위해 사용된다
+	- 유일성이 보장되는 자료형
+	- 변경 불가능한 원시 타입의 값
+	- 다른 값과 중복되지 않는 유일한 값
+	 
+</pre>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function(){
+
+	let req = new XMLHttpRequest();
+
+$('#box1 input:button').on('click',function(){
+	//비동기통신을 위해 request객체 생성하기
+	//요청
+	req.open('get','jsonObj.jsp');
+	req.send();
+	//응답
+	req.onreadystatechange=function(){
+		if(this.readyState == 4 && this.status == 200){
+			let a = JSON.parse(this.responseText);
+			
+			//key에 대한 정보를 찍을 때 Object.keys() 이용..배열로 반환
+			let key = Object.keys(a);
+			let val = Object.values(a);
+			let all = Object.entries(a);
+			
+			let code = `${key[0]} : ${a.이름}(${all[0]}) <br>`;
+				code += `${key[1]} : ${a.tel}(${all[1]}) <br>`;
+				code += `${key[2]} : ${a.addr}(${all[2]}) <br>`;
+				code += `${key[3]} : ${a.email}(${all[3]})`;
+			$('#d1').html(code);	
+		}
+	}
+});
+
+$('#box2 input:button').on('click',function(){
+	//객체생성 - 전역변수 사용
+	//요청
+	req.open('get','jsonObjArr.jsp');
+	req.send();
+	//응답
+	req.onreadystatechange=function(){
+		if(this.readyState == 4 && this.status == 200){
+			let a = JSON.parse(this.responseText);
+			
+			let val = Object.values(a);
+			let key = Object.keys(val[0]);
+			
+			//테이블 형태로 정보 출력
+			let code = "<table border='1'>";
+			//Object메소드를 이용해 key 정보 출력
+// 			code += "<tr><td>"+key[0]+"</td><td>전화</td><td>주소</td><td>메일</td></tr>";
+			code += `<tr><td>${key[0]}</td><td>${key[1]}</td><td>${key[2]}</td><td>${key[3]}</td></tr>`;
+			
+			//each에서 활용되는 콜백함수의 매개변수 중
+			//	첫번째 매개변수는 Object일때 key로, Array일때 index로 활용가능
+			//	두번째 매개변수는 value로 활용한다
+			//	사용하지 않을 경우 생략 가능하다 - 매개변수의 자리로 i,v역할을 구분
+			$.each(a,function(i,v){
+				  code += "<tr>";
+// 				  code += "<td>" + a[idx].이름 + "ㅋㅋ</td>";
+				  code += "<td>" + v.이름 + "</td>";
+				  code += "<td>" + v.tel + "</td>";
+				  code += "<td>" + v.addr + "</td>";
+				  code += "<td>" + v.email + "</td>";
+				  code += "</tr>";
+				});
+				code += "</table>";
+				$('#d2').html(code);
+		}
+	}
+});
+	
+});
+</script>
+</head>
+<body>
+  <div class="box" id="box1">
+    <input type="button" value="jsonObj">
+    <div id="d1"></div>
+  </div>
+  
+  <div class="box" id="box2">
+    <input type="button" value="jsonObjArr">
+    <div id="d2"></div>
+  </div>
+
+</body>
+</html>

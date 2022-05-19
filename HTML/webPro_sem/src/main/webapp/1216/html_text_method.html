@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<pre>
+	대상 요소의 내용 가져오기
+	text() : 태그를 포함하지 않은 내용 가져오기
+	html() : 태그를 포함한 내용 가져오기 - 첫번째 항목만
+</pre>
+  <p>1<span>홍길동</span></p>
+  <p>2<span>고길동</span></p>
+  <p>3<span>김길동</span></p>
+  <input type="button" value="text">
+  <input type="button" value="html">
+<script>
+$('[value="text"]').on('click',function(){
+	//alert($('p').text());
+});
+
+$('[value="html"]').on('click',function(){
+	//alert($('p').html());
+	
+	let rst = "";
+	//each() 메소드를 사용해서 전체 데이터 가져오기
+	$('p').each(function(i,v){	//사용하지 않을 경우 생략 가능		
+		//rst += $('p').html();			//선택 요소의 갯수에 맞는 값을 반환하지만 첫번째 항목만 반복해서 출력
+		rst += $(this).html() + "\n";	//each()메소드에서 this 사용시 순차적인 값을 반환받을수 있음
+		//rst += $('p').eq(i).html();	//index활용 - 요소의 index별 value를 반환받음
+// 		rst += $(v).html() + "\n";		//item(value)활용 - 요소가 가진 value를 순차적으로 반환
+	});
+	console.log(rst);
+});
+</script>
+</body>
+</html>

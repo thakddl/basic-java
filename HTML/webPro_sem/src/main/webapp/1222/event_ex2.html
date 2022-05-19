@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+img {
+  width: 100px;
+  height: 100px;
+}
+#show {
+  display: none;
+}
+</style>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	let s = "";
+	$('img').on('mouseover',function(){
+		s = $(this).attr('src');
+		let s2 = $(this).attr('src2');
+		$(this).attr('src',s2);
+	});
+	$('img').on('mouseout',function(){
+		$(this).attr('src',s);
+	});
+	//더블클릭시 이미지 사라짐
+	$('img').on('dblclick',function(){
+		$(this).hide();
+		//이미지 모두 사라졌을때 버튼 보이기
+		if($('img:visible').length < 1) $('#show').show();
+	});
+	
+	$('#show').on('click',function(){
+		$('img').show();
+		$(this).hide();
+	});
+});
+</script>
+</head>
+<body>
+  <div class="box" id="d1">
+    <img src="../images/국화.jpg" alt="꽃" src2="../images/수국.jpg">
+    <img src="../images/대나무숲.jpg" alt="자연" src2="../images/사막.jpg">
+    <img src="../images/tiger.jpg" alt="동물" src2="../images/lion.jpg">
+    <img src="../images/iu.jpg" alt="예쁨" src2="../images/suzy.jpg">
+  </div>
+  <input type="button" value="보이기" id="show">
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<style>
+td {
+  width: 100px;
+}
+</style>
+</head>
+<script>
+$(document).ready(function(){
+	//first, last, eq, lt, gt는 메소드로 대체해서 사용을 권장
+	$('li:first, li:last').css('background', 'yellow');
+	$('li').first().css('border','solid purple');
+	$('li').last().css('border','solid teal');
+	
+	$('li:eq(4)').css('background', 'red');
+	$('li').eq(4).css('border', '5px double');
+	
+	$('li:lt(4)').css('font-size', '1.5em')
+				.css('fontWeight','bold');
+	$('li:gt(4)').css('fontSize', '1.2em')
+				.css('font-style','italic');
+	$('li').slice(5).css('textDecoration','line-through');
+	//slice(start, end) end는 미포함, end생략시 끝까지 적용
+	$('li').slice(1,3).css('text-decoration','underline');
+	
+	$('tr:odd').css('background','red');
+	$('tr:even').css('background','green');
+	
+	//메소드체이닝
+	$('#box2 tr').first().css('background','black')
+						.css('color','gold')
+						.css('font-weight','bold');
+	//하나의 메소드에 {}로 다개의 속성을 작성하고 쉼표로 구분
+	$('#box2 tr').first().css({'background':'blue'
+								,'color':'white'
+								,'font-style':'italic'})
+	
+});
+</script>
+<body>
+<pre>기본필터 :first, :last, :eq(idx), :gt(idx), :lt(idx), :even, :odd</pre>
+  <div class="box" id="box1">
+    <ul>
+      <li>one</li>
+      <li>two</li>
+      <li>three</li>
+      <li>four</li>
+      <li>five</li>
+      <li>six</li>
+      <li>seven</li>
+      <li>eight</li>
+      <li>nine</li>
+    </ul>
+  </div>
+<pre>tr:od / tr:even</pre>
+  <div class="box" id="box2">
+    <table border="1">
+      <tr>
+        <td>ONE</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>TWO</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>THREE</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>FOUR</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>FIVE</td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>

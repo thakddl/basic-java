@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+/* img {
+  width: 100px;
+  height: 100px;
+} */
+div {
+  border: 1px solid red;
+}
+li {
+  border: 1px solid green;
+}
+</style>
+</head>
+<body>
+  <h4>버튼 클릭했을 때 해당 이미지 출력</h4>
+  <div id="d1">
+    <ul>
+      <li>iu.jpg</li>
+      <li>suzy.jpg</li>
+      <li>tiger.jpg</li>
+      <li>lion.jpg</li>
+      <li>spg.png</li>
+    </ul>
+    <!-- 새로 생성된 이미지 요소가 추가될 위치 -->
+  </div>
+  <input type="button" value="확인" onclick="proc1()">
+  
+  <h4>리스트 항목을 클릭했을 때 해당 이미지 출력</h4>
+  <div>
+    <ul>
+      <li onclick="proc2(this)">iu.jpg</li>
+      <li onclick="proc2(this)">suzy.jpg</li>
+      <li onclick="proc2(this)">tiger.jpg</li>
+      <li onclick="proc2(this)">lion.jpg</li>
+      <li onclick="proc2(this)">spg.png</li>
+    </ul>
+  </div>
+  
+  <h4>이벤트를 한번에 설정하기 - addEventListener('이벤트명',fn)</h4>
+  <ul>
+    <li class="add">iu.jpg</li>
+    <li class="add">suzy.jpg</li>
+    <li class="add">tiger.jpg</li>
+    <li class="add">lion.jpg</li>
+    <li class="add">spg.png</li>
+  </ul>
+  
+<script>
+let liTag = document.getElementsByClassName('add');
+for(i=0; i<liTag.length; i++){
+	liTag[i].addEventListener('click',addImage);
+}
+function addImage(){
+	//alert(this.firstChild.data);
+	let vsrc = this.firstChild.data;
+	//요소 생성하기
+	let vimg = document.createElement('img');
+	vimg.src = "../images/" + vsrc;
+	vimg.style.width = "50px";
+	vimg.height = 50;
+	this.appendChild(vimg);
+}
+
+function proc2(thli){
+	//console.log(thli.firstChild.data);
+	let vsrc = thli.firstChild.data;
+	//요소 생성하기
+	let vimg = document.createElement('img');
+	vimg.src = "../images/" + vsrc;
+	vimg.style.width = "50px";
+	vimg.height = 50;
+	thli.appendChild(vimg);
+}
+function proc1(){
+	//ul요소 접근
+	let list = document.getElementsByTagName('ul')[0];
+	let li = list.getElementsByTagName('li');
+	//반복하여 li요소의 데이터를 가져오기
+	for(i=0; i<li.length; i++){
+		//console.log(li[i].firstChild.data);
+		let vsrc = li[i].firstChild.data;
+		
+		//요소 생성하기
+		let vimg = document.createElement('img');
+		vimg.src = "../images/" + vsrc;
+		vimg.style.width = "100px";
+		vimg.height = 100;
+		document.getElementById('d1').appendChild(vimg);
+	}
+}
+</script>  
+<!--   <img src="../images/iu.jpg" alt=""> -->
+</body>
+</html>

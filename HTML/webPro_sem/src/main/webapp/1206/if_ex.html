@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script>
+calc=function(){
+	let x = parseInt(prompt("첫번째 정수를 입력"));
+	let y = parseInt(prompt("두번째 정수를 입력"));	
+	let z = prompt("연산자를 입력","+,-,*,/");
+	
+	//if문
+	//-때문에 전역화시켜서 사용함 
+	/* 
+	let sum;
+	if(z == "+"){
+		//let은 블럭영역에서 유효하기-
+		//let sum = x+y;
+		sum = x+y;
+		//또는 범위가 더 넓은 var사용
+		//var sum = x+y;
+	}else if(z == "-"){
+		sum = x-y;
+	}else if(z == "*"){
+		sum = x*y;
+	}else {
+		sum = x/y;
+	}
+	document.getElementsByTagName('div')[0].textContent=sum;
+	 */
+	 
+	//switch문
+	switch(z){
+	case '+':
+		var sum = x+y;
+		break;
+	case '-':
+		sum = x-y;
+		break;
+	case '*':
+		sum = x*y;
+		break;
+	case '/':
+		sum = x/y;
+		break;
+	}
+	var str = "첫번째 정수 : " + x + "<br>";
+	str += "연산자 : " + z + "<br>";
+	str += "두번째 정수 : " + y + "<br>";
+	str += x + z + y + "=" + sum;
+	//태그를 포함한 문자열 출력을 위해 innerHTML 사용
+	document.getElementsByTagName('div')[0].innerHTML=str;
+}
+</script>
+</head>
+<body>
+  <h4>숫자 2개 연산자 1개 입력후 결과 출력</h4>
+  <input type="button" value="계산" onclick="calc()">
+  <div></div>
+</body>
+</html>

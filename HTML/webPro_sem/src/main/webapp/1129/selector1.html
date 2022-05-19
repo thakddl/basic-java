@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+* {
+  font-style: italic;
+}
+h1 {
+  text-align: center;
+}
+#p1 {
+  background-color: red;
+}
+.p2 {
+  background-color: pink;
+}
+/* id=d1의 후손(자식포함) */
+#d1 div {
+  border: 1px solid orange;
+}
+/* id=d1의 자식div */
+#d1>div {
+  border: 3px dotted red;
+}
+#d1 p {
+  background-color: lime;
+}
+#d1>p {
+  color: red;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+#p3+div {
+  color: gold;
+  font-weight: bold;
+}
+#p3~p {
+  border: 2px solid purple;
+}
+</style>
+</head>
+<body>
+  <h1>selector</h1>
+  <p id="p1">id 단락</p>
+  <p class="p2">class 단락</p>
+  
+  <div id="d1">
+    <p>자손 자식 단락</p>
+    <div>
+      <p>자손 자식 단락</p>
+      <div>자손 자식 단락인데 div</div>
+    </div>
+  </div>
+  
+  <div id="d2">
+    <p id="p3">형제1 p</p>
+    <div>형제2 div</div>
+    <p>형제3 p</p>
+    <p>형제4 p</p>
+    <p>형제5 p</p>
+    <p>형제6 p</p>
+  </div>
+</body>
+</html>

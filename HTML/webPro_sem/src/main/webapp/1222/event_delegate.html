@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<pre>
+	이벤트 등록 형식 : delegate(위임, 대리)
+	부모의 이벤트를 물려받아 지정된 선택자에 이벤트를 연결하는 방식
+	(=부모 요소에 부여된 이벤트를 자식요소에게 delegate하는 방식으로 동적요소에도 이벤트 처리가 가능)
+
+
+	이미 생성된 버튼 및 동적으로 생성된 버튼에 같은 이벤트 처리기를 등록
+</pre>
+  <div class="box">
+    <input type="button" class="btn" value="버튼">
+    <input type="button" id="clear" value="해제">
+  </div>
+<script>
+//$(parenetSelector).delegate('childSelector','event',function(){})
+//선택대상의 부모 요소 또는 document를 지정
+//선택대상의 부모요소에는 동적요소가 올수 없다(조상 중에 정적인 요소를 찾아야 함)
+$('.box').on('click','.btn',function(){
+	//새로운 버튼 생성
+	$('<input>',{
+		'type' : 'button',
+		'class': 'btn',
+		'value': '새버튼'
+	}).appendTo('.box');
+});
+
+$('#clear').on('click',function(){
+	$('.btn').off('click');	//click이벤트를 제거
+});
+</script>
+</body>
+</html>

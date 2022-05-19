@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script>
+//속도 검증
+//console.time()/console.timeEnd()를 이용해서 작업시간을 측정
+
+console.time('using{}');
+let obj1 = {name:'iu',age:25,gender:'fm'};
+console.timeEnd('using{}');
+
+console.time('using new');
+let obj2 = new Object();
+	obj2[0]="iu";
+	obj2[1]=25;
+	obj2[2]="fm";
+console.timeEnd('using new');
+</script>
+</head>
+<body>
+<pre>
+  <h4>리터럴 객체 생성 vs 생성자 객체 생성</h4>
+	리터럴 방식 >> let obj = {}			//내부적으로 new Object 호출
+	생성자 방식 >> let obj = new Object()
+	
+	리터럴 방식의 객체 생성을 권장하는 이유
+	1. 코딩이 편하고 가독성도 좋음
+	2. 속도가 빠름(다수의 객체 생성후 시간 비교시 차이가 남)
+	3. 자바스크립트 오버라이딩 방지(생성자 방식으로 생성시 오버라이딩 가능성이 있음)
+</pre>
+  
+</body>
+</html>

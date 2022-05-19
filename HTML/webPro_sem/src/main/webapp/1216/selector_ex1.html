@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script>
+$(document).ready(function(){
+	//전체 배경색 변경
+	$('*').css('background', 'gold');
+	//h1요소 글자색 파랑
+	$('h1').css('color','blue');
+	//id=para인 요소 글자색 녹색
+	$('#para').css('color','green');
+	//class=sample인 요소 글자색 빨강
+	$('.sample').css('color','red');
+});
+</script>
+</head>
+<body>
+  <h1>제목입니다</h1>
+  <h2 id="para">작은 제목입니다</h2>
+  <h2 class="sample">샘플입니다</h2>
+</body>
+</html>

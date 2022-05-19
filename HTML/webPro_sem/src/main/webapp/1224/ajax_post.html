@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div class="box">
+    <form>
+      ID : <input name="id"> <br>
+      PW : <input type="password" name="pw"> <br>
+      <input type="button" value="전송">
+    </form>
+    <div id="d1"></div>
+  </div>
+<script>
+$('input:button').on('click',function(){
+	let id = $(':text').val();
+	let pw = $(':password').val();
+	//객체 생성
+	let req = new XMLHttpRequest();
+	//요청
+	let data = "id=" + id + "&pw=" + pw;
+	req.open('post','ajaxPost.jsp');
+	req.send(data);
+	//응답
+	req.onreadystatechange=function(){
+		if(this.readyState == 4 && this.status == 200){
+			let a = JSON.parse(this.responseText);
+			let code = `${id}님 ${a.rst}`;
+			$('#d1').html(code);
+		}
+	}
+});
+</script>
+</body>
+</html>

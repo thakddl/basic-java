@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+td {
+  width: 40px;
+  text-align: center;
+}
+</style>
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <pre>자식필터를 이용해 표 배경색 넣기</pre>
+  <div class="box" id="box1">
+    <table border="1" id="tbl1">
+      <tr>
+        <td>one</td>
+        <td>one</td>
+        <td>one</td>
+        <td>one</td>
+        <td>one</td>
+        <td>one</td>
+        <td>one</td>
+        <td>one</td>
+      </tr>
+      <tr>
+        <td>two</td>
+        <td>two</td>
+        <td>two</td>
+        <td>two</td>
+        <td>two</td>
+        <td>two</td>
+        <td>two</td>
+        <td>two</td>
+      </tr>
+      <tr>
+        <td>three</td>
+        <td>two</td>
+        <td>two</td>
+        <td>two</td>
+        <td>two</td>
+        <td>two</td>
+        <td>two</td>
+        <td>two</td>
+      </tr>
+      <tr>
+        <td>four</td>
+        <td>two</td>
+        <td>two</td>
+        <td>two</td>
+        <td>two</td>
+        <td>two</td>
+        <td>two</td>
+        <td>two</td>
+      </tr>
+    </table>
+    <table></table>
+  </div>
+<script>
+// td에 배경색 넣기1 - child관련 index 1부터 시작
+$('td:first-child').css('background','#BBDEFB');
+$('td:last-child').css('background','#F0F4C3');
+$('td:nth-child(3)').css('background','#D1C4E8');
+
+// td에 배경색 넣기2 - 배수 칸+시작위치
+$('td:nth-child(3n+4)').css('background','#Dee4E8');
+
+// tr에 배경색 넣기 - 테이블 구조상 tr을 td가 덮음
+$('#tbl1 tr:first-child').css('background','red');
+$('#tbl1 tr td').slice(2,7).css('background','red');
+$('#tbl1 tr:first-child td').css('background','gold');
+$('#tbl1 tr:last-child td').css('background','green');
+$('#tbl1 tr:nth-child(2) td').css('background','blue');
+
+// even, odd
+$('#tbl1 td:nth-child(even)').css('background','red');
+$('#tbl1 td:nth-child(odd)').css('background','green');
+
+//only-child
+$('#tbl1:only-child').css('border','5px double orange');
+</script>
+</body>
+</html>

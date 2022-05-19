@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+p {
+  border: 1px solid orange;
+}
+img {
+  width: 40px;
+  height: 40px;
+}
+</style>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	$('.box p').on('click',function(){
+		let str = $(this).text();
+		let str2 = $(this).attr('title');
+		//동적 이미지를 생성 - 자바스크립트 방식
+		let vimg = "<img src='../images/" + str +
+					".jpg' alt='" + str2 + "'>";
+		//선택요소 내부 뒷쪽에 붙이기 - append(부모.append(자식)), appendTo(자식.appendTo(부모))
+		//$(this).append(vimg);
+		//$(vimg).appendTo(this);
+		
+		//선택요소 내부 앞쪽에 붙이기 - prepend(), prependTo()
+		//$(this).prepend(vimg);
+		//$(vimg).prependTo(this);
+		
+		//선택요소 앞에 붙이기 - before(), insertBefore()
+		//$(this).before(vimg);
+		//$(vimg).insertBefore(this);
+		
+		//선택요소 뒤에 붙이기 - after(), insertAfter() 
+		//$(this).after(vimg);
+		//$(vimg).insertAfter(this);
+		
+		//동적 이미지를 생성 - jQuery 방식
+		/* $('<img>', {
+			'src' : '../images/'+ str + ".jpg",
+			'alt' : str2
+		}).insertBefore(this); */
+		
+		$(this).after($('<img>',{
+			'src' : '../images/'+ str + ".jpg",
+			'alt' : str2	
+		}));
+		
+	});
+});
+</script>
+</head>
+<body>
+  <h4>p요소 정보를 활용해 이미지를 생성하고 append, prepend로 추가하기</h4>
+  <div class="box">
+    <p title="flower1">국화</p>
+    <p title="dune">사막</p>
+    <p title="flower1">수국</p>
+    <p title="forest">대나무숲</p>
+  </div>
+</body>
+</html>

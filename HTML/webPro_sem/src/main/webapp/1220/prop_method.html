@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+  $('#runBtn').on('click',function(){
+	let rst = "";
+	rst += "체크박스 : " + $('#checkTest').prop('checked') + "<br>";
+	rst += "라디오버튼 : " + $('#radioTest').prop('checked') + "<br>";
+	rst += "셀렉트박스 : " + $('#selectTest option:eq(2)')
+							.prop('selected') + "<br>";
+	rst	+= "text is readonly : " + $('#textTest')
+							.prop('readonly');
+	$('#d1').html(rst);	
+  });
+  
+  //현재 상태를 반대로 변경하기
+  $('#changeBtn').on('click',function(){
+	//현재 상태 값 가져오기
+	let chk = $('#checkTest').prop('checked');
+	let rdo = $('#radioTest').prop('checked');
+	let sel = $('#selectTest option:eq(2)').prop('selected');
+	let txt = $('#textTest').prop('readonly');
+	
+	//반대로 설정하기
+	$('#checkTest').prop('checked',!chk);
+	$('#radioTest').prop('checked',!rdo);
+	$('#selectTest option:eq(2)').prop('selected',!sel);
+	$('#textTest').prop('readonly',!txt);
+  });
+  
+  //전체선택
+  $('#chkAll').on('click',function(){
+	  //console.log($(this).prop('checked'));
+	  let ck = $(this).prop('checked');
+	  //전체선택 요소의 상태를 하위 요소에 그대로 적용한다
+	  //$('.chk').prop('checked',ck);
+	  //$(this).nextAll().prop('checked',ck);
+	  //parent():부모요소찾기 / find():하위요소찾기
+	  $(this).parent().find('.chk').prop('checked',ck);
+  });
+  //숙제 >> 12.21 확인
+  //1~5항목까지 모두 선택되었을때 전체선택 체크 부분이 체크되도록...
+  
+  $('.chk').on('click',function(){
+    //console.log($('.chk:checked').length);
+    let size = $('.chk:checked').length;
+    if(size < 5){
+    	$('#chkAll').prop('checked',false);
+    }else{
+    	$('#chkAll').prop('checked',true);
+    }
+    
+  });
+  
+});
+</script>
+</head>
+<body>
+  <h4>실행 - 현재 상태 값 출력 / 변경 - 현재 상태를 반대 상태로 변경</h4>
+  <div class="box">
+    <form>
+       체크박스 : <input type="checkbox" id="checkTest" checked><br><br>
+       라디오버튼 : <input type="radio"	 id="radioTest"><br><br>
+       셀렉트박스
+       <select id="selectTest">
+         <option value="1">하나</option>
+         <option value="2">둘</option>
+         <option value="3">셋</option>
+         <option value="4">넷</option>
+       </select><br><br>
+       text요소(readonly) : <br>
+       <input type="text" value="가나다" id="textTest" readonly><br><br>
+       button요소 : <br>
+       <input type="button" value="실행" id="runBtn">
+       <input type="button" value="변경" id="changeBtn"><br><br>
+    </form>
+    <div id="d1"></div>
+  </div>
+  
+  <div class="box">
+    <div>체크박스(전체선택/해제) <br>
+      <input type="checkbox" id="chkAll">전체선택
+      <input type="checkbox" class="chk">1
+      <input type="checkbox" class="chk">2
+      <input type="checkbox" class="chk">3
+      <input type="checkbox" class="chk">4
+      <input type="checkbox" class="chk">5
+    </div>
+  </div>
+</body>
+</html>

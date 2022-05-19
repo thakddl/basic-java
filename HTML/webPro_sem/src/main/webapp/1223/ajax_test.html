@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	$('#box1 input:button').on('click',function(){
+		$('form').attr('action','oldTest.jsp').submit();
+	});
+	
+	$('#box2 input[type=button]').on('click',function(){
+		
+		//서버로 요청하기 위해 request객체가 필요
+		//XMLHttpRequest객체 : 서버와 상호작용하기 위해 사용
+		//					새로고침 없이 url로부터 데이터를 받아오며 ajax에 주로 사용 
+		let request = new XMLHttpRequest();
+		//요청정보 설정 (method, url, async - default:true/비동기방식)
+		//요청정보 중 async : 과거의 버그 현상으로 비동기통신이 불가한 경우를 대비하여 발생된 옵션 값
+		//		현재는 안정적인 ajax통신이 가능하며 비동기처리 통신이 훤씬 효율적이므로 속성자체의 사용을 비권장
+		request.open("get","reqTest.jsp", true);
+		//서버로 전달
+		request.send();
+		
+		//서버로부터 응답 확인(response)
+		//  -onreadystatechange : readyState값이 변할 때마다 자동으로 호출되는 함수 설정
+		//							(서버에서 응답올떄까지 총 5번 호출)
+		//		이 속성을 사용해서 서버에 요청한 데이터의 존재와 응답 도착의 순간을 특정할 수 있다 		
+		
+		//	-readyState : send()시 서버에서 요청페이지의 상태변화를 코드로 전송해줌
+		//			0:send전 준비 1:로딩 중 / 2:로딩 완료 3:서버 처리 중 4:서버 처리 끝
+		//	-status		: 결과에 대한 상태 코드
+		//			200:결과 성공 403:요청오류 404:요청페이지없음 500소스코드에러(서버에러)		
+		request.onreadystatechange = function(){
+			//console.log(this.readyState , this.status);
+			if(this.readyState == 4 && this.status == 200){
+				
+				//JSON형식의 데이터만 파싱할 수 있음 - 아니면 에러나요
+				let a = JSON.parse(this.responseText);
+				let code = "<ul>";
+					//셀렉터를 이용한 반복문 형태 $(selector).each() 
+					//오브젝트(배열) 이용한 반복문 형태 $.each(a,fn)
+					
+					//배열 형태로 출력 index로 접근
+					//code += "<li>" + a[0] + "</li>";
+					//반복문으로 출력
+					$.each(a,function(i){
+						code += "<li>" + a[i] + "</li>";
+					});
+					
+					//Object형태로 출력할 때 key로 접근하여 표현
+// 					code += `<li> ${a.addr} </li>`;
+// 					code += "<li>" + a.tel + "</li>";
+					code += "</ul>";
+					
+					$('#d2').html(code);
+			}
+		};
+	});
+});
+</script>
+</head>
+<body>
+  <div class="box" id="box1">
+    <h4>form을 이용한 전송</h4>
+    <form>
+      <input name="info">
+      <input type="button" value="확인">
+      <br><br>
+      <div id="d1"></div>
+    </form>
+  </div>
+  
+  <div class="box" id="box2">
+    <h4>ajax을 이용한 전송</h4>
+    <input type="button" value="확인">
+    <br><br>
+    <div id="d2"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+</head>
+<body>
+  <h4>우리나라 좋은나라 대한민국 만세~~ 독도는 우리땅~~ABCabc0123</h4>
+  
+  <input type="button" value="charAt" onclick="proc1()">
+  <div id="d1"></div> <br>
+  
+  <input type="button" value="(last)indexOf" onclick="proc2()">
+  <div id="d2"></div> <br>
+  
+  <input id="txt">
+  <input type="button" value="trim" onclick="proc3()">
+  <div id="d3"></div> <br>
+  
+  <input type="button" value="substring외" onclick="proc4()">
+  <div id="d4"></div> <br>
+  
+  <input type="button" value="split" onclick="proc5()">
+  <div id="d5"></div> <br>
+  
+  <textarea rows="5" cols="40"></textarea>
+  <input type="button" value="replace" onclick="proc6()">
+  <div id="d6"></div>
+  
+  <div id="d7">
+  	우리집 강아지는 복슬강아지<br>
+  	학교갔다 돌아오면 멍멍멍<br><br>
+  </div>
+  <textarea rows="4" cols="40"></textarea>
+  <input type="button" value="확인" onclick="proc7()">
+<script>
+let str = "우리나라 좋은나라 대한민국 만세~~ 독도는 우리땅~~ABCabc0123";
+
+//charAt(idx) : 인덱스 번째의 문자를 반환
+//charCodeAt(idx) : 인덱스 번째의 문자 아스키코드를 반환 (A->65, a->97, 0->48)
+function proc1(){
+	let rst = `str.charAt(3)번째 문자를 반환 : ${str.charAt(3)} <br>`;
+		rst += `str.charCodeAt(3)번째 아스키코드 반환 : ${str.charCodeAt(3)} <br>` ;
+		rst += `str.charCodeAt(29)번째 아스키코드 반환 : ${str.charCodeAt(29)} <br>` ;
+		rst += `str.charCodeAt(32)번째 아스키코드 반환 : ${str.charCodeAt(32)} <br>` ;
+		rst += `str.charCodeAt(37)번째 아스키코드 반환 : ${str.charCodeAt(37)} <br>` ;
+	document.getElementById('d1').innerHTML = rst;
+}
+//indexOf() / lastIndexOf()
+function proc2(){
+	let rst = `str.indexOf("우리",4) : ${str.indexOf("우리",4)} <br>`;
+		rst += `str.lastIndexOf("우리",20) : ${str.lastIndexOf("우리",20)} <br>`;
+		rst += `str.lastIndexOf("뷁") : ${str.lastIndexOf("뷁")} <br>`;
+	document.getElementById('d2').innerHTML = rst;
+}
+//trim : 문자열 앞뒤 공백을 제거 (문자열 안쪽 공백은 제거하지 않는다)
+function proc3(){
+	let tVal = document.getElementById('txt').value;
+	let rst = `공백 제거 전 : ${tVal.length} <br>`;
+	tVal = tVal.trim();
+	rst += `공백 제거 후 : ${tVal.length} <br>`;
+	
+	if(tVal.length < 1){
+		alert("데이터를 입력하세요~!!");
+		return false;
+	}
+	document.getElementById('d3').innerHTML = rst;
+}
+//start~end 사이 문자열 잘라내기(end는 포함되지 않는다)
+//substring(start,end)
+//slice(start,end)
+//substr(start,length)
+function proc4(){
+	let start = str.indexOf("독");
+	let end = start + "독도는 우리땅".length;
+	//console.log(start +" ~ "+ end);
+	let rst = `str.substring(start,end) : ${str.substring(start,end)} <br>`;
+		rst += `str.slice(start,end) : ${str.slice(start,end)} <br>`;
+		rst += `str.substr(start,length) : 
+						${str.substr(start,"독도는 우리땅".length)} <br>`;
+	document.getElementById('d4').innerHTML = rst;
+}
+//split(구분자, 구분갯수) : 구분자를 기준으로 문자열을 분리하여 배열로 반환
+function proc5(){
+	let arr = str.split(" ",2);
+	let rst = `문자열-갯수 : ${str.length}, str[2] : ${str[2]} <br>`;
+		rst += `배열-갯수 : ${arr.length}, arr[1] : ${arr[1]}`;
+	document.getElementById('d5').innerHTML = rst;
+}
+//replace(찾을 문자열, 변경할 문자열) : 문자열을 찾아 변경할 문자열로 바꿈
+//		//g : 대상이 되는 문자열 내 모든(global) 패턴을 체크(=검색, 검사)
+function proc6(){
+	let ta = document.getElementsByTagName('textarea')[0].value;
+	ta = ta.replace(/\r/g,"").replace(/\n/g,"<br>");
+	document.getElementById('d6').innerHTML = ta;
+}
+//div 내용 가져오기
+function proc7(){
+	let dVal = document.getElementById('d7').innerHTML;
+// 	dVal = dVal.replace(/<br>/g,"\r\n");
+	dVal = dVal.replace(/<br>/g,"");
+	document.getElementsByTagName('textarea')[1].value = dVal;
+}
+//search(), match() => w3schools.com에서 예제를 참고
+</script>
+</body>
+</html>

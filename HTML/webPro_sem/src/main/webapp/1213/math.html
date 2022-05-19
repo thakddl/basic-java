@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script>
+	//난수 : 정의된 범위 내 무작위로 추출된 수
+	//random() : 난수를 발생시키는 메소드, 
+	//			 0~1미만(1은 포함하지 않음) 구간에서 부동소수점의 난수 생성
+	
+// 0 <= random() < 1
+document.write("0 <= random() < 1	| " + Math.random() + "<br><br>");
+// floor() 이용 소수점 이하 버림
+document.write("floor() | " + Math.floor(Math.random()) + "<br><br>");
+//0 <= random() <= 9
+document.write("0 <= random() <= 9	| " 
+				+ Math.floor(Math.random()*10) + "<br><br>");
+//0 <= random() <= 10
+document.write("0 <= random() <= 10	| " 
+				+ Math.floor(Math.random()*11) + "<br><br>");
+
+//1 <= random() <= 10
+document.write("1 <= random() <= 10	| " 
+				+ Math.floor(Math.random()*10+1) + "<br><br>");
+
+//2 <= random() <= 5
+document.write("2 <= random() <= 5	| " 
+				+ Math.floor(Math.random()*4+2) + "<br><br>");
+
+	
+	
+	
+	
+</script>
+</head>
+<body>
+<pre>
+	Math객체 : 수학적인 계산을 해주는 메소드를 제공하는 객체
+	객체 이름을 이용해 직접 접근해 사용한다
+	- Math.속성
+	- Math.메소드()
+</pre>
+</body>
+</html>

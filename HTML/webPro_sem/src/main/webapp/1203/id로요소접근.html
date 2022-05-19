@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+</head>
+<body>
+<pre>
+	id를 이용한 요소의 접근
+	getElementById()
+	단어 첫자 대문자 표기를 주의할 것
+	id는 unique하기 때문에 단일 요소가 검색됨(=Element)
+</pre>
+  
+  <h1 id="test">This is a heading</h1>
+  <button type="button" onclick="fn1()">스타일 변경/내용 변경</button>
+  
+  <input type="text" value="홍길동" id="txt">
+  <button type="button" onclick="fn2()">내용 변경</button>
+  
+<script>
+function fn1(){
+	var e = document.getElementById("test");
+	//e.style.color="red";
+	alert(document.getElementById("test").innerHTML);
+	document.getElementById("test").innerHTML="CHANGE";
+}
+function fn2(){
+	alert(document.getElementById("txt").value);
+	document.getElementById("txt").value = "지드래곤";
+}
+</script>
+</body>
+</html>

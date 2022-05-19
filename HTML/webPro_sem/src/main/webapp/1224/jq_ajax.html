@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div class="box">
+    <form>
+      ID : <input name="id"> <br>
+      PW : <input type="password" name="pw"> <br>
+      <input type="button" value="전송">
+    </form>
+    <div id="d1"></div>
+  </div>
+<script>
+$('input:button').on('click',function(){
+	let id = $(':text').val();
+	let pw = $(':password').val();
+	let data = 'id='+id+'&pw='+pw;
+	
+	//jQuery로 ajax처리
+	$.ajax({
+		url: 'ajaxPost.jsp',
+		type: 'post',	//method로 대체 가능, type이 더 먼저 생성된 속성
+		data : data,
+		success:function(asdf){
+			let code = "";
+			if(asdf.code == "ok"){
+				code += `${id}님 환영해요~`;
+			}else{
+				code += `${id}님 로그인 실패`;
+			}
+			$('#d1').html(code);
+		},
+		error:function(xhr){
+			alert("상태 >> " + xhr.status);
+		},
+		dataType: 'json'
+	});
+});
+</script>
+</body>
+</html>

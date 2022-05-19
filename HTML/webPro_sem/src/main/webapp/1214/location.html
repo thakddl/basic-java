@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+<style>
+#d1 {
+  border: 1px solid orange;
+  height: 100px;
+  margin: 10px;
+}
+</style>
+<script>
+let url = document.createElement('a');
+url.href = 'https://developer.mozilla.org:8080/en-US/search?q=URL#search-results-close-container';
+console.log("hash : " + url.hash);
+console.log("host : " + url.host);
+console.log("hostname : " + url.hostname);
+console.log("port : " + url.port);
+console.log("pathname : " + url.pathname);
+console.log("protocol : " + url.protocol);
+console.log("search : " + url.search);
+//location.href / assign() - 페이지 이동하기
+function proc(){
+	//location.href="http://naver.com";
+	//location.assign("http://google.com");
+	location.href="test.jsp?name=홍길동";
+	//location.assign("test.jsp?name=고길동");
+}
+//replace - 이전페이지로 돌아갈 수 없음
+function replace(url){
+// 	location.replace("test.jsp?name=돈고백");
+	location.replace(url + "?name=못돌아가요");
+}
+//reload - 문서를 다시 불러오기
+function reload(){
+	//랜덤 문자를 출력 후 
+	let str = ["HTML","JAVA","JavaScript","CSS","jQuery"];
+	let idx = parseInt(Math.random()*str.length);
+	let rst = "<h4>" + str[idx] + "</h4>";
+	let d = document.getElementById('d1');
+	d.innerHTML = rst;
+	d.style.color = 'purple';
+	d.style.fontSize = '1.5em';
+	//1초 뒤에 현재 문서를 다시 불러옴
+	setTimeout(function(){
+		location.reload();
+	},1000);
+}
+</script>
+</head>
+<body>
+<pre>
+	location : URL 정보를 갖는 객체
+	<br><br>
+	https://developer.mozilla.org:8080/en-US/search?q=URL#search-results-close-container
+</pre>
+  <span>페이지 이동하기 - location.href</span>
+  <input type="button" value="이동" onclick="proc()"><br><br>
+  
+  <span>현재 문서를 새문서로 대체 - location.replace (다시 돌아갈수 없음)</span>
+<!--   <input type="button" value="이동" onclick="replace()"> -->
+  <br>
+  <a href="javascript:replace('test.jsp')">test.jsp로 이동</a> <br><br>
+
+  <span>문서를 다시 불러오기 - location.reload</span>
+  <input type="button" value="이동" onclick="reload()">
+  <div id="d1">현재 문서</div>
+
+</body>
+</html>

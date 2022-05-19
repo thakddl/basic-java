@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/outStyle.css">
+</head>
+<body>
+  <h4>getTime() : 경과시간 구하기 (반환 값은 milliseconds)</h4>
+  <input type="button" value="확인" onclick="proc1()">
+  <div id="d1"></div>
+  
+  <br><br>
+  
+  <h4>D-day 구하기 - 크리스마스</h4>
+  <input type="button" value="확인" onclick="proc2()">
+  <div id="d2"></div>
+  <br><br>
+  
+  <h4>환불 가능일 계산하기 - 7일 이후 반품 불가</h4>
+  <input type="date" id="refund">
+  <input type="button" value="확인" onclick="proc3()">
+
+<script>
+let now = new Date();
+
+function proc1(){
+	let bir = new Date("2018.11.12");
+	
+	//태어난 날짜로부터 경과시간 구하기
+	let today = now.getTime();
+	let birthday = bir.getTime();
+	//console.log(today - birthday);
+	
+	let time = today - birthday;
+	let sec = time/1000;
+	let min = sec/60;
+	let hh = min/60;
+	let dd = hh/24;
+	let yy = dd/365;
+	
+	let str = `생년월일 : ${bir.toLocaleDateString()} <br>`;
+	str += `오늘 날짜 : ${now.toLocaleDateString()} <br>`;
+	str += `태어난지 ${yy.toFixed(2)}년 경과	<br>`;
+	str += `태어난지 ${dd.toFixed(1)}일 경과	<br>`;
+	str += `태어난지 ${hh.toFixed()}시 경과	<br>`;
+	str += `태어난지 ${min.toFixed()}분 경과	<br>`;
+	str += `태어난지 ${sec.toFixed()}초 경과	<br>`;
+	document.getElementById('d1').innerHTML = str;	
+}
+
+function proc2(){
+	let christmas = new Date("2021.12.25");
+	
+	let tday = now.getTime();
+	let chst = christmas.getTime();
+	
+	let time = chst - tday;
+	let dd = time/1000/60/60/24;
+	
+	let str = `크리스마스 : ${christmas.toLocaleDateString()} <br>`;
+		str += `오늘 : ${now.toLocaleDateString()} <br>`;
+		str += `D-${dd.toFixed(1)} 일 <br>`;
+		str += `D-${Math.round(dd)} 일 <br>`;	//반올림
+		str += `D-${Math.ceil(dd)} 일 <br>`;		//올림
+		str += `D-${Math.floor(dd)} 일`;			//내림
+	document.getElementById('d2').innerHTML = str;
+}
+//7일 후 환불 불가
+function proc3(){
+
+	//선택한 날짜 값 가져오기 - input요소의 값 가져오기 - value활용
+	let rf = document.getElementById('refund').value;
+	//console.log(rf);
+	let refunday = new Date(rf);
+	//getTime()으로 경과시간 구하기
+	let today = now.getTime();
+	let rfd = refunday.getTime();
+	let time = today - rfd; //ms
+	//공식을 통해 ms값을 일자로 변경
+	let dd = time/1000/60/60/24;
+	//비교
+	if(dd >= 7){
+		alert("환불기간이 지났습니다");
+	}else{
+		alert("교환/환불이 가능합니다");
+	}
+}
+
+
+</script>
+</body>
+</html>
